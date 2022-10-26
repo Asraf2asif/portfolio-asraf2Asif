@@ -1,8 +1,8 @@
 import React from 'react';
-import '.Testimonial.scss';
+import './Header.scss';
 
-const Testimonial = () => {
-  return <div>Testimonial</div>;
+const Header = () => {
+  return <div>Header</div>;
 };
 
-export default Testimonial;
+export default Header;
