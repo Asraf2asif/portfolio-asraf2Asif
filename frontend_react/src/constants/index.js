@@ -1,2 +1,4 @@
-export { images } from './images';
-export { variables } from './variables';
+import { images } from './others/images';
+import { variables } from './others/variables';
+
+export { images, variables };
