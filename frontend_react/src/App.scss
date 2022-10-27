@@ -139,6 +139,10 @@
     text-transform: uppercase;
     color: $black-color;
   }
+
+  @media screen and (max-width: 500px) {
+    padding: 2rem;
+  }
 }
 
 .head-text {
@@ -184,11 +188,5 @@
 
   @media screen and (max-width: 450px) {
     font-size: 0.9rem;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .copyright {
-    padding: 2rem;
   }
 }
