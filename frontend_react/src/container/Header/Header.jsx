@@ -71,9 +71,9 @@ const Header = () => {
         whileInView={scaleVariants.whileInView}
         className='app__header-circles'
       >
-        {headCircleList.map((circleImg, idx) => (
+        {headCircleList.map((headCircleImg, idx) => (
           <div className='circle-cmp app__flex' key={`circle-${idx}`}>
-            <img src={circleImg} alt={`circle-${circleImg}`} />
+            <img src={headCircleImg} alt={`circle-${headCircleImg}`} />
           </div>
         ))}
       </motion.div>
