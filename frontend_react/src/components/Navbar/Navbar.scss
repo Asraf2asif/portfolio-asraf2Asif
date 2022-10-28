@@ -99,12 +99,11 @@
         // alternate nav link holder
         div {
             position: fixed;
-            top: 0;
-            bottom: 0;
-            right: 0;
+            top: 15px;
+            right: 15px;
             z-index: 5;
             padding: 1rem;
-            @include size(80%, 100vh);
+            @include size(190px, auto);
             @include flex-end();
             @include flex-direction(column);
             background: url(../../assets/bgWhite.png);
@@ -112,13 +111,17 @@
             @include background-size(cover);
             background-repeat: repeat;
             @include box-shadow(0 0 20px rgba(168, 168, 168, 0.15));
+            @include border-radius(15px);
 
             // close btn icon
             svg {
-                @include size(35px);
-                color: $secondary-color;
+                @include size(25px);
+                color: $gray-color;
                 margin: 0.5rem 1rem;
                 cursor: pointer;
+                position: fixed;
+                top: 15px;
+                right: 7px;
             }
 
             // alternate nav list
