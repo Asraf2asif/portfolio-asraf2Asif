@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import './Navbar.scss';
-import { images, variables } from '../../constants/index';
-import { HiMenuAlt4, HiX } from 'react-icons/hi';
+import { images, variables } from '../../constants';
+import { HiX } from 'react-icons/hi';
+import { FaBars } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+
+const { menuList } = variables;
+const { logo: logoImg } = images;
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -10,11 +14,11 @@ const Navbar = () => {
   return (
     <nav className='app__navbar'>
       <div className='app__navbar-logo'>
-        <img src={images.logo} alt='logo' />
+        <img src={logoImg} alt='logo' />
       </div>
 
       <ul className='app__navbar-links'>
-        {variables.menuList.map((item) => (
+        {menuList.map((item) => (
           <li className='app__flex p-text' key={`link-${item}`}>
             <div />
             <a href={`#${item}`}>{item}</a>
@@ -23,7 +27,7 @@ const Navbar = () => {
       </ul>
 
       <div className='app__navbar-small'>
-        <HiMenuAlt4 onClick={() => setToggle(true)} />
+        <FaBars onClick={() => setToggle(true)} />
 
         {toggle && (
           <motion.div
@@ -34,7 +38,7 @@ const Navbar = () => {
           >
             <HiX onClick={() => setToggle(false)} />
             <ul>
-              {variables.menuList.map((item) => (
+              {menuList.map((item) => (
                 <li key={item}>
                   <a href={`#${item}`} onClick={() => setToggle(false)}>
                     {item}
