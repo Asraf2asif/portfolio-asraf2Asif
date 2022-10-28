@@ -1,4 +1,5 @@
 @import '../../constants/styles/prefix';
+@import '../../constants/styles/mixin';
 @import '../../constants/styles/variable';
 
 .app__navbar {
@@ -13,48 +14,50 @@
     position: fixed;
     z-index: 2;
 
+    // nav logo holder
     &-logo {
         @include display-flex();
         @include justify-content(flex-start);
         @include align-items(center);
 
+        // nav logo img
         img {
-            width: 99px;
-            height: 20px;
+            @include size(99px, 20px);
 
             @media screen and (min-width: 2000px) {
-                width: 180px;
-                height: 40px;
+                @include size(180px, 40px);
             }
         }
     }
 
+    // nav list
     &-links {
         @include flex(1);
-        @include display-flex();
-        @include justify-content(center);
-        @include align-items(center);
+        @include flex-center();
         list-style-type: none;
 
+        // nav list item
         li {
             margin: 0 1rem;
             cursor: pointer;
             @include flex-direction(column);
 
+            // menu hover indicator (dot)
             div {
-                width: 5px;
-                height: 5px;
+                @include size(5px);
                 background: transparent;
                 @include border-radius(50%);
                 margin-bottom: 5px;
             }
 
+            // show that indicator on hover
             &:hover {
                 div {
                     background: $secondary-color;
                 }
             }
 
+            // nav link
             a {
                 color: $gray-color;
                 text-decoration: none;
@@ -63,31 +66,98 @@
                 font-weight: 500;
                 @include transition(all 0.3s ease-in-out);
 
+                // alternate nav link hover
                 &:hover {
                     color: $secondary-color;
                 }
             }
         }
 
-        @media screen and (max-width: 900px) {
+        // hide default nav links on small screen
+        @media screen and (max-width: $small-nav-breakpoint) {
             display: none;
         }
     }
 
+    // alternate nav contents on small screen
     &-small {
-        width: 35px;
-        height: 35px;
+        // alternate nav button
+        @include size(35px);
         @include border-radius(50%);
         position: relative;
-        @include display-flex();
-        @include justify-content(center);
-        @include align-items(center);
+        @include flex-center();
         background: $secondary-color;
 
+        // alternate nav btn icon
         svg {
-            width: 70%;
-            height: 70%;
+            @include size(70%);
             color: $white-color;
+            cursor: pointer;
+        }
+
+        // alternate nav link holder
+        div {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 5;
+            padding: 1rem;
+            @include size(80%, 100vh);
+            @include flex-end();
+            @include flex-direction(column);
+            background: url(../../assets/bgWhite.png);
+            background-color: $white-color;
+            @include background-size(cover);
+            background-repeat: repeat;
+            @include box-shadow(0 0 20px rgba(168, 168, 168, 0.15));
+
+            // close btn icon
+            svg {
+                @include size(35px);
+                color: $secondary-color;
+                margin: 0.5rem 1rem;
+                cursor: pointer;
+            }
+
+            // alternate nav list
+            ul {
+                list-style: none;
+                @include space-reset();
+                @include size(100%);
+                @include flex-start();
+                @include flex-direction(column);
+
+                // alternate nav list item
+                li {
+                    margin: 1rem;
+
+                    // alternate nav link
+                    a {
+                        color: $gray-color;
+                        text-decoration: none;
+                        font-size: 1rem;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                        @include transition(all 0.3s ease-in-out);
+
+                        // alternate nav link hover
+                        &:hover {
+                            color: $secondary-color;
+                        }
+                    }
+                }
+            }
+
+            // hide alternate nav link holder on large screen
+            @media screen and (min-width: $small-nav-breakpoint) {
+                display: none;
+            }
+        }
+
+        // hide alternate nav button on large screen
+        @media screen and (min-width: $small-nav-breakpoint) {
+            display: none;
         }
     }
 }

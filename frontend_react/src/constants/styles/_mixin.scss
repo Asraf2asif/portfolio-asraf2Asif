@@ -1,0 +1,36 @@
+@import './prefix';
+
+@mixin size($value, $value2:0) {
+  width: $value;
+
+  @if $value2 !=0 {
+    height: $value2;
+  }
+
+  @else {
+    height: $value;
+  }
+}
+
+@mixin flex-center() {
+  @include display-flex();
+  @include justify-content(center);
+  @include align-items(center);
+}
+
+@mixin flex-start() {
+  @include display-flex();
+  @include justify-content(flex-start);
+  @include align-items(flex-start);
+}
+
+@mixin flex-end() {
+  @include display-flex();
+  @include justify-content(flex-end);
+  @include align-items(flex-end);
+}
+
+@mixin space-reset() {
+  margin: 0;
+  padding: 0;
+}
