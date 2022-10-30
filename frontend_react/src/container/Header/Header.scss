@@ -1,3 +1,178 @@
+@import '../../constants/styles/prefix';
+@import '../../constants/styles/mixin';
+@import '../../constants/styles/variable';
+
+#home {
+    position: relative;
+    background: url('../../assets/bgIMG.png');
+    @include background-size(cover);
+    background-repeat: repeat;
+    background-position: center center;
+
+    .app__wrapper {
+        padding: 0;
+
+        .copyright {
+            display: none;
+        }
+    }
+}
+
 .app__header {
-    padding-top: 100px;
+    @include flex(1);
+    @include size(100%);
+    @include flex-direction(row);
+    padding: 6rem 2rem 0;
+
+    @include media-break($break-d-xl, min) {
+        padding-top: 8rem;
+    }
+
+    @include media-break($break-d-lg) {
+        @include flex-direction(column);
+    }
+
+    @include media-break($break-d-sm) {
+        padding: 6rem 1rem 2rem;
+    }
+
+
+    &-info {
+        @include flex(0.65);
+        @include flex-start();
+        @include flex-direction(column);
+        height: 100%;
+
+        @include media-break($break-d-lg) {
+            width: 100%;
+            margin-right: 0;
+        }
+
+        .badge {
+            width: 100%;
+            @include flex-end();
+            @include flex-direction(column);
+
+            @include media-break($break-d-lg) {
+                @include flex-start();
+            }
+
+            .badge-cmp,
+            .tag-cmp {
+                padding: 1rem 2rem;
+                border: $white-color;
+                border-radius: 15px;
+                @include flex-direction(row);
+                width: auto;
+                @include box-shadow(0 0 20px rgba(0, 0, 0, 0.1));
+            }
+
+            .badge-cmp {
+                span {
+                    color: rgb(11, 211, 177);
+                    font-size: 2.5rem;
+                }
+
+                @include media-break($break-d-xl, min) {
+                    font-size: 5rem;
+                }
+
+            }
+
+            .tag-cmp {
+                @include flex-direction(column);
+                margin-top: 2rem;
+
+                p {
+                    width: 100%;
+                    line-height: 1.9;
+                    text-transform: uppercase;
+                    text-align: right;
+                }
+
+            }
+        }
+    }
+
+    &-img {
+        @include flex(1);
+        height: 100%;
+        @include flex-end();
+        position: relative;
+
+        margin-left: 2rem;
+
+        @include media-break($break-d-lg) {
+            margin: 2rem 0;
+        }
+
+        .img {
+            position: absolute;
+            @include size(100%, 100%);
+            z-index: 1;
+            background: url('../../assets/profile.png');
+            @include background-size(contain);
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .overlay_circle {
+            @include size(100%, 90%);
+        }
+    }
+
+    &-circles {
+        @include flex(0.75);
+        @include display-flex();
+        @include justify-content(space-evenly);
+        @include align-items(flex-start);
+        @include flex-direction(column);
+        height: 100%;
+        margin-left: 1rem;
+
+        div {
+            @include size(100px);
+            @include border-radius(50%);
+            background: $white-color;
+            @include box-shadow(0 0 20px rgba(0, 0, 0, 0.1));
+
+            img {
+                @include size(60%);
+            }
+
+            &:nth-child(2) {
+                margin: 1.75rem;
+                @include size(150px);
+            }
+
+            &:nth-child(3) {
+                @include size(70px);
+            }
+
+            @include media-break($break-d-xl, min) {
+                &:nth-child(1) {
+                    @include size(400px);
+                }
+
+                &:nth-child(2) {
+                    @include size(170px);
+                }
+
+                &:nth-child(3) {
+                    @include size(200px);
+                }
+            }
+        }
+
+        @include media-break($break-d-lg) {
+            width: 100%;
+            @include flex-direction(row);
+            @include flex-wrap();
+            margin-left: 0;
+
+            div {
+                margin: 1rem;
+            }
+        }
+    }
 }

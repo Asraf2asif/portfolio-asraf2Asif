@@ -34,3 +34,11 @@
   margin: 0;
   padding: 0;
 }
+
+@mixin media-break ($break-point, $device-type: max, $break-type: width, $media-type: screen) {
+  $break-logic: $device-type+'-'+$break-type;
+
+  @media #{$media-type} and (#{$break-logic}: $break-point) {
+    @content;
+  }
+}

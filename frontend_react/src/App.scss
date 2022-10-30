@@ -1,4 +1,5 @@
 @import './constants/styles/prefix';
+@import './constants/styles/mixin';
 @import './constants/styles/variable';
 
 .app {
@@ -21,10 +22,8 @@
     @include flex-direction(row);
   }
 
-  &__flex {
-    @include display-flex();
-    @include justify-content(center);
-    @include align-items(center);
+  &__flex-center {
+    @include flex-center();
   }
 
   &__wrapper {
@@ -33,7 +32,7 @@
     @include flex-direction(column);
     padding: 4rem 2rem;
 
-    @media screen and (max-width: 450px) {
+    @include media-break($break-d-sm) {
       padding: 4rem 1rem 2rem;
     }
   }
@@ -47,22 +46,18 @@
     padding: 1rem;
 
     div {
-      width: 40px;
-      height: 40px;
+      @include size(40px);
       @include border-radius(50%);
       background-color: $white-color;
       margin: 0.25rem 0;
       border: 1px solid $lightGray-color;
 
-      @include display-flex();
-      @include justify-content(center);
-      @include align-items(center);
+      @include flex-center();
 
       @include transition(all 0.3s ease-in-out);
 
       svg {
-        width: 15px;
-        height: 15px;
+        @include size(15px);
         color: $gray-color;
       }
 
@@ -75,15 +70,12 @@
         }
       }
 
-      @media screen and (min-width: 2000px) {
-        width: 70px;
-        height: 70px;
-
+      @include media-break($break-d-xl, min) {
+        @include size(70px);
         margin: 0.5rem 0;
 
         svg {
-          width: 30px;
-          height: 30px;
+          @include size(30px);
         }
       }
     }
@@ -98,8 +90,7 @@
     padding: 1rem;
 
     &-dot {
-      width: 10px;
-      height: 10px;
+      @include size(10px);
       @include border-radius(50%);
       background-color: #cbcbcb;
       margin: 0.5rem;
@@ -110,14 +101,13 @@
         background-color: $secondary-color;
       }
 
-      @media screen and (min-width: 2000px) {
-        width: 20px;
-        height: 20px;
+      @include media-break($break-d-xl, min) {
+        @include size(20px);
       }
     }
   }
 
-  @media screen and (max-width: 500px) {
+  @include media-break($break-d-sm-p-50) {
 
     &__navigation,
     &__social {
@@ -140,7 +130,7 @@
     color: $black-color;
   }
 
-  @media screen and (max-width: 500px) {
+  @include media-break($break-d-sm-p-50) {
     padding: 2rem;
   }
 }
@@ -156,11 +146,11 @@
     color: $secondary-color;
   }
 
-  @media screen and (min-width: 2000px) {
+  @include media-break($break-d-xl, min) {
     font-size: 4rem;
   }
 
-  @media screen and (max-width: 450px) {
+  @include media-break($break-d-sm) {
     font-size: 2rem;
   }
 }
@@ -171,7 +161,7 @@
   color: $gray-color;
   line-height: 1.5;
 
-  @media screen and (min-width: 2000px) {
+  @include media-break($break-d-xl, min) {
     font-size: 1.75rem;
   }
 }
@@ -182,11 +172,11 @@
   color: $black-color;
   text-align: left;
 
-  @media screen and (min-width: 2000px) {
+  @include media-break($break-d-xl, min) {
     font-size: 2rem;
   }
 
-  @media screen and (max-width: 450px) {
+  @include media-break($break-d-sm) {
     font-size: 0.9rem;
   }
 }
