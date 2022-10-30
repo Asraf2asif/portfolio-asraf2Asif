@@ -19,7 +19,7 @@ const Navbar = () => {
 
       <ul className='app__navbar-links'>
         {menuList.map((item) => (
-          <li className='app__flex p-text' key={`link-${item}`}>
+          <li className='app__flex-center p-text' key={`link-${item}`}>
             <div />
             <a href={`#${item}`}>{item}</a>
           </li>

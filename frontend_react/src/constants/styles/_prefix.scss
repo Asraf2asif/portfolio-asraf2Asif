@@ -65,6 +65,7 @@ flex-wrap
 justify-content
 keyframes
 linear-gradient
+object-fit
 transform
 transform-origin
 transition
@@ -145,7 +146,7 @@ user-select
   @include prefix-value((flex-direction: $value), webkit ms);
 }
 
-@mixin flex-wrap($value) {
+@mixin flex-wrap($value: wrap) {
   @include prefix-value((flex-wrap: $value), webkit ms);
 }
 
@@ -185,6 +186,10 @@ user-select
   /* Opera 11.10+ */
   @include prefix-value((background-image: linear-gradient($angle, $gradient1, $gradient2)), webkit moz ms o);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=$angle, StartColorStr='#{$gradient1}', EndColorStr='#{$gradient2}');
+}
+
+@mixin object-fit($value) {
+  @include prefix((object-fit: $value), o);
 }
 
 @mixin transform($value, $important: 0) {

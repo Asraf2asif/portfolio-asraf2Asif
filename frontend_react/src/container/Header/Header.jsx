@@ -16,11 +16,11 @@ const scaleVariants = {
 };
 
 const { headCircleList } = variables;
-const { profile: profileImg, circle: circleImg } = images;
+const { circle: circleImg } = images;
 
 const Header = () => {
   return (
-    <header className='app__header app__flex'>
+    <header id='home' className='app__header app__flex-center'>
       <motion.div
         whileInView={{
           x: [-100, 0],
@@ -29,9 +29,11 @@ const Header = () => {
         transition={{ duration: 0.5 }}
         className='app__header-info'
       >
-        <div className='app__header-badge'>
-          <div className='badge-cmp app__flex'>
-            <MdWavingHand />
+        <div className='badge'>
+          <div className='badge-cmp app__flex-center'>
+            <span>
+              <MdWavingHand />
+            </span>
             <div>
               {' '}
               {/*  margin left 20 */}
@@ -40,7 +42,7 @@ const Header = () => {
             </div>
           </div>
 
-          <div className='tag-cmp app__flex'>
+          <div className='tag-cmp app__flex-center'>
             <p className='p-text'>Web Developer</p>
             <p className='p-text'>Freelancer</p>
           </div>
@@ -54,7 +56,7 @@ const Header = () => {
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className='app__header-img'
       >
-        <img src={profileImg} alt='profile_bg' />
+        <div className="img"/>
         <motion.img
           whileInView={{
             scale: [0, 1],
@@ -72,7 +74,7 @@ const Header = () => {
         className='app__header-circles'
       >
         {headCircleList.map((headCircleImg, idx) => (
-          <div className='circle-cmp app__flex' key={`circle-${idx}`}>
+          <div className='circle-cmp app__flex-center' key={`circle-${idx}`}>
             <img src={headCircleImg} alt={`circle-${headCircleImg}`} />
           </div>
         ))}
