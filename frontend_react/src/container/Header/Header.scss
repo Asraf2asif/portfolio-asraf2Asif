@@ -99,7 +99,6 @@
         height: 100%;
         @include flex-end();
         position: relative;
-
         margin-left: 2rem;
 
         @include media-break($break-d-lg) {
@@ -130,48 +129,49 @@
         height: 100%;
         margin-left: 1rem;
 
-        div {
-            @include size(100px);
-            @include border-radius(50%);
-            background: $white-color;
-            @include box-shadow(0 0 20px rgba(0, 0, 0, 0.1));
-
-            img {
-                @include size(60%);
-            }
-
-            &:nth-child(2) {
-                margin: 1.75rem;
-                @include size(150px);
-            }
-
-            &:nth-child(3) {
-                @include size(70px);
-            }
-
-            @include media-break($break-d-xl, min) {
-                &:nth-child(1) {
-                    @include size(400px);
-                }
-
-                &:nth-child(2) {
-                    @include size(170px);
-                }
-
-                &:nth-child(3) {
-                    @include size(200px);
-                }
-            }
-        }
-
         @include media-break($break-d-lg) {
             width: 100%;
             @include flex-direction(row);
             @include flex-wrap();
             margin-left: 0;
+        }
 
-            div {
+        .circle-cmp {
+            @include size(100px);
+            @include border-radius(50%);
+            background: $white-color;
+            @include box-shadow(0 0 20px rgba(0, 0, 0, 0.1));
+
+            @include media-break($break-d-xl, min) {
+                &:nth-child(1) {
+                    @include size(400px);
+                }
+            }
+
+            &:nth-child(2) {
+                margin: 1.75rem;
+                @include size(150px);
+
+                @include media-break($break-d-xl, min) {
+                    margin: 0;
+                    @include size(170px);
+                }
+            }
+
+            &:nth-child(3) {
+                @include size(70px);
+
+                @include media-break($break-d-xl, min) {
+                    @include size(200px);
+                }
+            }
+
+            @include media-break($break-d-lg) {
                 margin: 1rem;
+            }
+
+            img {
+                @include size(60%);
             }
         }
     }
