@@ -3,7 +3,6 @@
 @import '../../constants/styles/variable';
 
 .app__about {
-    padding-top: $section-gap-top;
     @include display-flex($flex:1, $display:false, $direction:column);
     width: 100%;
 
@@ -13,7 +12,7 @@
 
         &-item {
             width: 190px;
-            @include display-flex($justify-content:flex-start, $align-items:center, $direction:column);
+            @include display-flex($placement:start, $direction:column);
             margin: 2rem;
 
             @include media-break($break-d-xl, min) {

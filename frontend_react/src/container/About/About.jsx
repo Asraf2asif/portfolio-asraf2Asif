@@ -2,43 +2,20 @@ import React, { useEffect, useState } from 'react';
 import './About.scss';
 
 import { motion } from 'framer-motion';
-import { client } from '../../client';
+import { client, urlFor } from '../../client';
 
 // const { headCircleList } = variables;
-import { images } from '../../constants';
-const { about01, about02, about03, about04 } = images;
-
-const aboutDataInit = [
-  {
-    title: 'Web Development',
-    description: 'I am a good web developer',
-    imgUrl: about01,
-  },
-  {
-    title: 'Web Design',
-    description: 'I am a creative web designer',
-    imgUrl: about02,
-  },
-  {
-    title: 'UI/UX',
-    description: 'I am a effective UI/UX creator',
-    imgUrl: about03,
-  },
-  {
-    title: 'Web Animations',
-    description: 'I am a skiled web animator',
-    imgUrl: about04,
-  },
-];
+// import { images } from '../../constants';
+// const { about01, about02, about03, about04 } = images;
 
 const About = () => {
-  const [aboutData, setAboutData] = useState([aboutDataInit]);
+  const [aboutData, setAboutData] = useState([]);
   useEffect(() => {
     const query = '*[_type == "abouts"]';
     client
       .fetch(query)
       .then((data) => setAboutData(data))
-      .catch((err) => setAboutData(aboutDataInit));
+      .catch((err) => setAboutData([]));
   }, []);
 
   return (
@@ -59,7 +36,7 @@ const About = () => {
           >
             <div
               className='img'
-              style={{ backgroundImage: `url(${imgUrl})` }}
+              style={{ backgroundImage: `url(${urlFor(imgUrl)})` }}
             />
             <h2 className='bold-text'>{title}</h2>
             <p className='p-text'>{description}</p>

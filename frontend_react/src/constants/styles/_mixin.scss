@@ -1,15 +1,15 @@
 @use "sass:map";
 @import './prefix';
 
-@mixin size($value, $value2:0) {
-  width: $value;
+@mixin size($width-param, $height-param:0) {
+  width: $width-param;
 
-  @if $value2 !=0 {
-    height: $value2;
+  @if $height-param !=0 {
+    height: $height-param;
   }
 
   @else {
-    height: $value;
+    height: $width-param;
   }
 }
 

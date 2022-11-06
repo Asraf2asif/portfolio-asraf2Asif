@@ -22,7 +22,6 @@
     @include display-flex($flex:1, $display:false, $direction:row);
     @include size(100%);
     padding: 6rem 2rem 0;
-    padding-top: $section-gap-top;
 
     @include media-break($break-d-xl, min) {
         padding-top: 8rem;
