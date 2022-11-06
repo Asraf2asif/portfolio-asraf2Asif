@@ -27,16 +27,28 @@
   }
 }
 
-@mixin prefix-value($declarations, $prefixes: ()) {
+@mixin prefix-value($declarations, $prefixes: (), $important: 0) {
 
   @each $property,
   $value in $declarations {
     @each $prefix in $prefixes {
-      #{$property}: #{'-' + $prefix + '-' + $value};
+      @if $important==1 {
+        #{$property}: #{'-' + $prefix + '-' + $value + '!important'};
+      }
+
+      @else {
+        #{$property}: #{'-' + $prefix + '-' + $value};
+      }
     }
 
     // Output standard non-prefixed declaration
-    #{$property}: $value;
+    @if $important==1 {
+      #{$property}: #{$value + '!important'};
+    }
+
+    @else {
+      #{$property}: $value;
+    }
   }
 }
 
