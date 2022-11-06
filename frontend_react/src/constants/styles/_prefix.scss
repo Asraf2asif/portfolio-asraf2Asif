@@ -121,7 +121,7 @@ user-select
   @include prefix-value(($tag: $value), webkit ms);
 }
 
-@mixin display-flex() {
+@mixin display-flex-init() {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;

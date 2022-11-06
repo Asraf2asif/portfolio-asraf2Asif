@@ -4,9 +4,7 @@
 
 .app__navbar {
     width: 100%;
-    @include display-flex();
-    @include justify-content(space-between);
-    @include align-items(center);
+    @include display-flex($justify-content:space-between, $align-items:center);
     padding: 1rem 2rem;
     background: rgba(255, 255, 255, .25);
     @include backdrop-filter(blur(4px));
@@ -16,9 +14,7 @@
 
     // nav logo holder
     &-logo {
-        @include display-flex();
-        @include justify-content(flex-start);
-        @include align-items(center);
+        @include display-flex($justify-content:flex-start, $align-items:center);
 
         // nav logo img
         img {
@@ -32,8 +28,7 @@
 
     // nav list
     &-links {
-        @include flex(1);
-        @include flex-center();
+        @include display-flex($flex:1, $placement:center);
         list-style-type: none;
 
         // nav list item
@@ -104,8 +99,7 @@
             z-index: 5;
             padding: 1rem;
             @include size(190px, auto);
-            @include flex-end();
-            @include flex-direction(column);
+            @include display-flex($direction:column, $placement:end);
             background: url(../../assets/bgWhite.png);
             background-color: $white-color;
             @include background-size(cover);
@@ -129,8 +123,7 @@
                 list-style: none;
                 @include space-reset();
                 @include size(100%);
-                @include flex-start();
-                @include flex-direction(column);
+                @include display-flex($direction:column, $placement:start);
 
                 // alternate nav list item
                 li {

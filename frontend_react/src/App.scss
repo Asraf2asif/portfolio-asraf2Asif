@@ -18,8 +18,7 @@
     width: 100%;
     min-height: 100vh;
 
-    @include display-flex();
-    @include flex-direction(row);
+    @include display-flex($direction:row);
   }
 
   &__flex-center {
@@ -27,9 +26,8 @@
   }
 
   &__wrapper {
-    @include flex(1);
+    @include display-flex($flex:1, $display:false, $direction:column);
     width: 100%;
-    @include flex-direction(column);
     padding: 4rem 2rem;
 
     @include media-break($break-d-sm) {
@@ -38,11 +36,7 @@
   }
 
   &__social {
-    @include display-flex();
-    @include justify-content(flex-end);
-    @include align-items(center);
-    @include flex-direction(column);
-
+    @include display-flex($justify-content:flex-end, $align-items:center, $direction:column);
     padding: 1rem;
 
     div {
@@ -51,9 +45,7 @@
       background-color: $white-color;
       margin: 0.25rem 0;
       border: 1px solid $lightGray-color;
-
       @include flex-center();
-
       @include transition(all 0.3s ease-in-out);
 
       svg {
@@ -82,11 +74,7 @@
   }
 
   &__navigation {
-    @include display-flex();
-    @include justify-content(center);
-    @include align-items(center);
-    @include flex-direction(column);
-
+    @include display-flex($placement:center, $direction:column);
     padding: 1rem;
 
     &-dot {
@@ -94,7 +82,6 @@
       @include border-radius(50%);
       background-color: #cbcbcb;
       margin: 0.5rem;
-
       @include transition(background-color 0.2s ease-in-out);
 
       &:hover {
@@ -119,11 +106,7 @@
 .copyright {
   width: 100%;
   padding: 2rem 0 0;
-
-  @include display-flex();
-  @include flex-direction(column);
-  @include justify-content(flex-end);
-  @include align-items(flex-end);
+  @include display-flex($justify-content:flex-end, $align-items:flex-end, $direction:column);
 
   p {
     text-transform: uppercase;

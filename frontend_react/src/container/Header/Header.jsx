@@ -16,11 +16,15 @@ const scaleVariants = {
 };
 
 const { headCircleList } = variables;
-const { circle: circleImg } = images;
+const { circle: circleImg, profile: profileImg, bg: bgImg } = images;
 
 const Header = () => {
   return (
-    <header id='home' className='app__header app__flex-center'>
+    <header
+      id='home'
+      className='app__header app__flex-center'
+      style={{ backgroundImage: `url(${bgImg})` }}
+    >
       <motion.div
         whileInView={{
           x: [-100, 0],
@@ -56,7 +60,10 @@ const Header = () => {
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className='app__header-img'
       >
-        <div className="img"/>
+        <div
+          className='img'
+          style={{ backgroundImage: `url(${profileImg})` }}
+        />
         <motion.img
           whileInView={{
             scale: [0, 1],

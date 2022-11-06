@@ -1,3 +1,4 @@
+@use "sass:map";
 @import './prefix';
 
 @mixin size($value, $value2:0) {
@@ -13,7 +14,7 @@
 }
 
 @mixin flex-center() {
-  @include display-flex();
+  @include display-flex-init();
   @include justify-content(center);
   @include align-items(center);
 }
@@ -28,6 +29,45 @@
   @include display-flex();
   @include justify-content(flex-end);
   @include align-items(flex-end);
+}
+
+
+@mixin display-flex($flex:0, $display:true, $justify-content:0, $align-items:0, $placement:0, $direction:0, $wrap:0) {
+  @if $flex !=0 {
+    @include flex($flex);
+  }
+
+  @if $display==true {
+    @include display-flex-init();
+  }
+
+  @if $justify-content !=0 {
+    @include justify-content($justify-content);
+  }
+
+  @if $align-items !=0 {
+    @include align-items($align-items);
+  }
+
+  @if $placement==start {
+    @include flex-start();
+  }
+
+  @else if $placement==end {
+    @include flex-end();
+  }
+
+  @else if $placement==center {
+    @include flex-center();
+  }
+
+  @if $direction !=0 {
+    @include flex-direction($direction);
+  }
+
+  @if $wrap !=0 {
+    @include flex-wrap($wrap);
+  }
 }
 
 @mixin space-reset() {
