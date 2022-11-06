@@ -133,9 +133,9 @@ user-select
 }
 
 @mixin flex($value) {
-  -webkit-box-flex:  $value;
-  -moz-box-flex:  $value;
-  @include prefix-value((flex: $value), webkit ms);
+  -webkit-box-flex: $value;
+  -moz-box-flex: $value;
+  @include prefix((flex: $value), webkit ms);
 }
 
 @mixin flex-direction($value) {
@@ -143,11 +143,11 @@ user-select
   -webkit-box-direction: normal;
   -moz-box-orient: vertical;
   -moz-box-direction: normal;
-  @include prefix-value((flex-direction: $value), webkit ms);
+  @include prefix((flex-direction: $value), webkit ms);
 }
 
 @mixin flex-wrap($value: wrap) {
-  @include prefix-value((flex-wrap: $value), webkit ms);
+  @include prefix((flex-wrap: $value), webkit ms);
 }
 
 @mixin justify-content($value) {
