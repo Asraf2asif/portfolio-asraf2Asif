@@ -3,6 +3,7 @@ import './Header.scss';
 import { MdWavingHand } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { images, variables } from '../../constants';
+import { AppWrap } from '../../wrapper';
 
 const scaleVariants = {
   whileInView: {
@@ -21,7 +22,6 @@ const { circle: circleImg, profile: profileImg, bg: bgImg } = images;
 const Header = () => {
   return (
     <header
-      id='home'
       className='app__header app__flex-center'
       style={{ backgroundImage: `url(${bgImg})` }}
     >
@@ -39,8 +39,6 @@ const Header = () => {
               <MdWavingHand />
             </span>
             <div>
-              {' '}
-              {/*  margin left 20 */}
               <p className='p-text'>Hello, I am</p>
               <p className='head-text'>Asif</p>
             </div>
@@ -90,4 +88,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AppWrap({ comp: Header, idName: 'home' });
