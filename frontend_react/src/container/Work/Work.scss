@@ -1,0 +1,15 @@
+@import '../../constants/styles/prefix';
+@import '../../constants/styles/mixin';
+@import '../../constants/styles/variable';
+
+.app__work-portfolio {
+    .img-holder {
+        .img {
+            @include size(170px, 170px);
+            @include border-radius(15px);
+            @include background-size(cover);
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+    }
+}

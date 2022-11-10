@@ -27,22 +27,24 @@ const About = () => {
         means<span> Good Business</span>
       </h2>
       <div className='app__profiles'>
-        {aboutData.map(({ title = '', description = '', imgUrl = '' }, idx) => (
-          <motion.div
-            whileInView={{ opacity: 1 }}
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.5, type: 'tween' }}
-            className='app__profiles-item'
-            key={title + idx}
-          >
-            <div
-              className='img'
-              style={{ backgroundImage: `url(${urlFor(imgUrl)})` }}
-            />
-            <h2 className='bold-text'>{title}</h2>
-            <p className='p-text'>{description}</p>
-          </motion.div>
-        ))}
+        {aboutData.map(
+          ({ title = '', description = '', imgUrl = '#' }, idx) => (
+            <motion.div
+              whileInView={{ opacity: 1 }}
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.5, type: 'tween' }}
+              className='app__profiles-item'
+              key={title + idx}
+            >
+              <div
+                className='img'
+                style={{ backgroundImage: `url(${urlFor(imgUrl)})` }}
+              />
+              <h2 className='bold-text'>{title}</h2>
+              <p className='p-text'>{description}</p>
+            </motion.div>
+          )
+        )}
       </div>
     </div>
   );
