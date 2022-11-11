@@ -2,14 +2,136 @@
 @import '../../constants/styles/mixin';
 @import '../../constants/styles/variable';
 
-.app__work-portfolio {
-    .img-holder {
-        .img {
-            @include size(170px, 170px);
-            @include border-radius(15px);
-            @include background-size(cover);
-            background-repeat: no-repeat;
-            background-position: center center;
+.app__work {
+    @include display-flex($flex:1, $display:false, $direction:column);
+    width: 100%;
+
+    &-filter {
+        @include display-flex($placement:center, $wrap:wrap, $direction:row);
+        margin: 4rem 0 2rem;
+
+        .item {
+            padding: 0.5rem 1rem;
+            @include border-radius(0.5rem);
+            background-color: #fff;
+            color: #000;
+            font-weight: 800;
+            cursor: pointer;
+            @include transition(all 0.3s ease);
+            margin: 0.5rem;
+
+            &:hover,
+            &.active {
+                background-color: $secondary-color;
+                color: #fff;
+            }
+
+            @include media-break($break-d-xl, min) {
+                padding: 1rem 2rem;
+                @include border-radius(0.85rem);
+            }
+        }
+    }
+
+    &-portfolio {
+        @include display-flex($placement:center, $wrap:wrap);
+
+        .item {
+            width: 270px;
+            @include flex-direction(column);
+            margin: 2rem;
+            padding: 1rem;
+            @include border-radius(0.5rem);
+            background-color: #fff;
+            color: #000;
+            cursor: pointer;
+            @include transition(all 0.3s ease);
+
+            &:hover {
+                @include box-shadow(0 0 25px rgba(0, 0, 0, 0.2));
+            }
+
+            @include media-break($break-d-xl, min) {
+                width: 470px;
+                padding: 1.25rem;
+                @include border-radius(0.75rem);
+            }
+
+            @include media-break($break-d-xs) {
+                width: 100%;
+                margin: 1rem;
+            }
+
+            &-thumb {
+                @include size(100%, 230px);
+                position: relative;
+
+                @include media-break($break-d-xl, min) {
+                    height: 350px;
+                }
+
+                .img {
+                    @include size(100%);
+                    @include border-radius(0.5rem);
+                    @include background-size(cover);
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+
+                &-hover {
+                    @include pos-abs($all:0);
+                    @include size(100%);
+                    background-color: rgba(0, 0, 0, 0.5);
+                    @include border-radius(0.5rem);
+                    opacity: 0;
+                    @include transition(all 0.3s ease);
+
+                    div {
+                        @include size(50px);
+                        @include border-radius(50%);
+                        background-color: rgba(0, 0, 0, 0.5);
+                        color: #fff;
+                        margin: 1rem;
+                        font-family: $font-base;
+                        font-weight: 800;
+                        cursor: pointer;
+                        @include transition(all 0.3s ease);
+
+                        svg {
+                            @include size(50%);
+                            color: $white-color;
+                        }
+                    }
+                }
+            }
+
+            &-content {
+                padding: 0.5rem;
+                width: 100%;
+                position: relative;
+                @include flex-direction(column);
+
+                h4 {
+                    margin-top: 1rem;
+                    line-height: 1.5;
+
+                    @include media-break($break-d-xl, min) {
+                        margin-top: 3rem;
+                    }
+                }
+
+                &>p {
+                    margin-top: 10px;
+                }
+
+                .tag {
+                    position: absolute;
+                    padding: 0.5rem 1rem;
+                    @include border-radius(10px);
+                    background-color: #fff;
+                    top: -25px;
+                }
+            }
         }
     }
 }

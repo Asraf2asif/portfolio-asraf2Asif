@@ -6,7 +6,7 @@ const AppWrap = ({ comp: Comp, idName, classes }) =>
     return (
       <div id={idName} className={`app__container ${classes && classes}`}>
         <SocialMedia />
-        <div className='app__wrapper app__flex'>
+        <div className='app__wrapper app__flex-center '>
           <Comp />
           <div className='copyright'>
             <div className='p-text'>@2022 ASIF</div>

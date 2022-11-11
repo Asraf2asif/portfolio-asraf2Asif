@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-// eslint-disable-next-line
+import React, { useEffect, useState, useCallback } from 'react';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import { client, urlFor } from '../../client';
@@ -9,14 +8,14 @@ import { variables } from '../../constants';
 
 const { workCatList } = variables;
 
-const handleFilter = (item) => {};
+const animateCardState = [
+  { y: 0, opacity: 1 },
+  { y: 100, opacity: 0 },
+];
 
 const Work = () => {
-  // eslint-disable-next-line
   const [activeFilter, setActiveFilter] = useState('All');
-  // eslint-disable-next-line
-  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
-  // eslint-disable-next-line
+  const [animateCard, setAnimateCard] = useState([animateCardState[0]]);
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
 
@@ -34,8 +33,24 @@ const Work = () => {
       });
   }, []);
 
+  const handleFilter = useCallback(
+    (item) => {
+      setActiveFilter(item);
+      setAnimateCard([animateCardState[1]]);
+      setTimeout(() => {
+        setAnimateCard([animateCardState[0]]);
+        if (item === 'All') {
+          setFilterWork(works);
+        } else {
+          setFilterWork(works.filter((work) => work.tags.indexOf(item) !== -1));
+        }
+      }, 500);
+    },
+    [works]
+  );
+
   return (
-    <div>
+    <div className='app__work'>
       <h2 className='head-text'>
         My creative<span> Portfolio</span>
         <br />
@@ -45,9 +60,9 @@ const Work = () => {
         {workCatList.map((catName, idx) => (
           <div
             key={idx}
-            onClick={handleFilter(catName)}
-            className={`app__work-filter-item app__flex p-text${
-              activeFilter === catName ? ' item-active' : ''
+            onClick={() => handleFilter(catName)}
+            className={`item app__flex-center p-text${
+              activeFilter === catName ? ' active' : ''
             }`}
           >
             {catName}
@@ -59,16 +74,69 @@ const Work = () => {
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className='app__work-portfolio'
       >
-        {filterWork.map(({ imgUrl = '#' }, idx) => (
-          <div key={idx} className='app__work-item app__flex'>
-            <div className='img-holder app__flex'>
-              <div
-                className='img'
-                style={{ backgroundImage: `url(${urlFor(imgUrl)})` }}
-              />
+        {filterWork.map(
+          (
+            {
+              title = '',
+              description = '',
+              tags = '',
+              imgUrl = '#',
+              projectLink = '#',
+              codeLink = '#',
+            },
+            idx
+          ) => (
+            <div key={idx} className='item app__flex-center '>
+              <div className='item-thumb app__flex-center '>
+                <div
+                  className='img'
+                  style={{ backgroundImage: `url(${urlFor(imgUrl)})` }}
+                />
+
+                <motion.div
+                  whileHover={{ opacity: [0, 1] }}
+                  transition={{
+                    duration: 0.25,
+                    ease: 'easeInOut',
+                    staggerChildren: 0.5,
+                  }}
+                  className='item-thumb-hover app__flex-center '
+                >
+                  <a href={projectLink} target='_blank' rel='noreferrer'>
+                    <motion.div
+                      whileInView={{ scale: [0, 1] }}
+                      whileHover={{ scale: [1, 0.9] }}
+                      transition={{ duration: 0.25 }}
+                      className='explore app__flex-center '
+                    >
+                      <AiFillEye />
+                    </motion.div>
+                  </a>
+
+                  <a href={codeLink} target='_blank' rel='noreferrer'>
+                    <motion.div
+                      whileInView={{ scale: [0, 1] }}
+                      whileHover={{ scale: [1, 0.9] }}
+                      transition={{ duration: 0.25 }}
+                      className='code app__flex-center'
+                    >
+                      <AiFillGithub />
+                    </motion.div>
+                  </a>
+                </motion.div>
+              </div>
+
+              <div className='item-content app__flex-center '>
+                <h4 className='bold-text'>{title}</h4>
+                <p className='p-text'>{description}</p>
+
+                <div className='tag app__flex-center '>
+                  <p className='p-text'>{tags[0]}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </motion.div>
     </div>
   );

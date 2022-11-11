@@ -50,15 +50,18 @@
   }
 
   @if $placement==start {
-    @include flex-start();
+    @include justify-content(flex-start);
+    @include align-items(flex-start);
   }
 
   @else if $placement==end {
-    @include flex-end();
+    @include justify-content(flex-end);
+    @include align-items(flex-end);
   }
 
   @else if $placement==center {
-    @include flex-center();
+    @include justify-content(center);
+    @include align-items(center);
   }
 
   @if $direction !=0 {
@@ -67,6 +70,45 @@
 
   @if $wrap !=0 {
     @include flex-wrap($wrap);
+  }
+}
+
+@mixin pos-abs($top:false, $right:false, $bottom:false, $h:false, $v:false, $all:false, $left:false, $abs:true) {
+  @if $abs==true {
+    position: absolute;
+  }
+
+  @if $top !=false {
+    top: $top;
+  }
+
+  @if $right !=false {
+    right: $right;
+  }
+
+  @if $bottom !=false {
+    bottom: $bottom;
+  }
+
+  @if $left !=false {
+    left: $left;
+  }
+
+  @if $h !=false {
+    left: $h;
+    right: $h;
+  }
+
+  @if $v !=false {
+    top: $v;
+    bottom: $v;
+  }
+
+  @if $all !=false {
+    top: $all;
+    right: $all;
+    bottom: $all;
+    left: $all;
   }
 }
 
