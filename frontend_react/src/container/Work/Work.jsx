@@ -7,14 +7,14 @@ import './Work.scss';
 import { variables } from '../../constants';
 
 const { workCatList } = variables;
-
+const activeFilterAll = 'All';
 const animateCardState = [
   { y: 0, opacity: 1 },
   { y: 100, opacity: 0 },
 ];
 
 const Work = () => {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState(activeFilterAll);
   const [animateCard, setAnimateCard] = useState([animateCardState[0]]);
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
@@ -39,7 +39,7 @@ const Work = () => {
       setAnimateCard([animateCardState[1]]);
       setTimeout(() => {
         setAnimateCard([animateCardState[0]]);
-        if (item === 'All') {
+        if (item === activeFilterAll) {
           setFilterWork(works);
         } else {
           setFilterWork(works.filter((work) => work.tags.indexOf(item) !== -1));

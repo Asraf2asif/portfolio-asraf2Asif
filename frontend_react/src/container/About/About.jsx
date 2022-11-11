@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './About.scss';
-
 import { motion } from 'framer-motion';
 import { client, urlFor } from '../../client';
 import { AppWrap } from '../../wrapper';
-
-// const { headCircleList } = variables;
-// import { images } from '../../constants';
-// const { about01, about02, about03, about04 } = images;
 
 const About = () => {
   const [aboutData, setAboutData] = useState([]);
