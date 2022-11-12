@@ -37,7 +37,7 @@
                 div {
                     @include size(60px);
                     @include border-radius(50%);
-                    background-color: #fef4f5;
+                    border: 2px solid $primary-color;
 
                     @include media-break($break-d-xl, min) {
                         @include size(90px);

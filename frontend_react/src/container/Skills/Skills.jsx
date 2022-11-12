@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo } from 'react';
 import { motion } from 'framer-motion';
 import ReactTooltip from 'react-tooltip';
-import { AppWrap } from '../../wrapper';
+import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
 import './Skills.scss';
 import { images } from '../../constants';
@@ -89,7 +89,7 @@ const Skills = memo(() => {
 
       <div className='app__skills-container'>
         <motion.div className='list'>
-          {skills.map(({ name = '', bgColor = '#fff', icon = '#' }, idx) => (
+          {skills.map(({ name = '', icon = '#' }, idx) => (
             <motion.div
               whileInView={{ opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
@@ -98,7 +98,6 @@ const Skills = memo(() => {
             >
               <div
                 className='app__flex-center'
-                style={{ backgroundColor: bgColor }}
               >
                 <img src={icon} alt={name} />
                 {/* <img src={urlFor(icon)} alt={name} /> */}
@@ -145,5 +144,10 @@ const Skills = memo(() => {
     </div>
   );
 });
-
-export default AppWrap({ comp: Skills, idName: 'skills' });
+const MotionWraped = MotionWrap({ comp: Skills, classes: 'app__skills' });
+const AppWraped = AppWrap({
+  comp: MotionWraped,
+  idName: 'skills',
+  classes: 'app__whitebg',
+});
+export default AppWraped;
