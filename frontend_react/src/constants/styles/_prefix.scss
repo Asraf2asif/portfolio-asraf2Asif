@@ -58,6 +58,7 @@
 /// + Popular mixins including vendor prefixes for cross-browser support
 
 /*
+align-content
 align-items
 align-self
 animation
@@ -84,89 +85,94 @@ transition
 user-select
 */
 
-@mixin align-items($value) {
+@mixin align-content($value, $important: 0) {
+  -ms-flex-line-pack: center;
+  @include prefix((align-content: $value), webkit, $important);
+}
+
+@mixin align-items($value, $important: 0) {
   -ms-flex-align: $value;
   -webkit-box-align: $value;
   -moz-box-align: $value;
-  @include prefix((align-items: $value), webkit);
+  @include prefix((align-items: $value), webkit, $important);
 }
 
-@mixin align-self($value) {
+@mixin align-self($value, $important: 0) {
   -ms-flex-item-align: $value;
   -ms-grid-row-align: $value;
-  @include prefix((align-self: $value), webkit);
+  @include prefix((align-self: $value), webkit, $important);
 }
 
-@mixin animation($value) {
-  @include prefix((animation: $value), webkit moz ms o);
+@mixin animation($value, $important: 0) {
+  @include prefix((animation: $value), webkit moz ms o, $important);
 }
 
-@mixin animation-delay($value) {
-  @include prefix((animation-delay: $value), webkit moz o);
+@mixin animation-delay($value, $important: 0) {
+  @include prefix((animation-delay: $value), webkit moz o, $important);
 }
 
-@mixin appearance($value) {
-  @include prefix((appearance: $value), webkit moz);
+@mixin appearance($value, $important: 0) {
+  @include prefix((appearance: $value), webkit mozv, $important);
 }
 
-@mixin backdrop-filter($value) {
-  @include prefix((backdrop-filter: $value), webkit);
+@mixin backdrop-filter($value, $important: 0) {
+  @include prefix((backdrop-filter: $value), webkit, $important);
 }
 
 @mixin background-size($value, $important: 0) {
   @include prefix((background-size: $value), webkit moz o, $important);
 }
 
-@mixin border-radius($value) {
-  @include prefix((border-radius: $value), webkit moz);
+@mixin border-radius($value, $important: 0) {
+  @include prefix((border-radius: $value), webkit moz, $important);
 }
 
-@mixin box-shadow($value) {
-  @include prefix((box-shadow: $value), webkit moz);
+@mixin box-shadow($value, $important: 0) {
+  @include prefix((box-shadow: $value), webkit moz, $important);
 }
 
-@mixin box-sizing($value) {
-  @include prefix((box-sizing: $value), webkit moz);
+@mixin box-sizing($value, $important: 0) {
+  @include prefix((box-sizing: $value), webkit moz, $important);
 }
 
-@mixin calc($tag, $value) {
-  @include prefix-value(($tag: $value), webkit ms);
+@mixin calc($tag, $value, $important: 0) {
+  @include prefix-value(($tag: $value), webkit ms, $important);
 }
 
-@mixin display-flex-init() {
+@mixin display-flex-init($important: 0) {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
-  @include prefix-value((display: flex), webkit);
+  @include prefix-value((display: flex), webkit, $important);
 }
 
-@mixin filter($value) {
-  @include prefix((filter: $value), webkit moz ms o);
+@mixin filter($value, $important: 0) {
+  @include prefix((filter: $value), webkit moz ms o, $important);
 }
 
-@mixin flex($value) {
+@mixin flex($value, $important: 0) {
   -webkit-box-flex: $value;
   -moz-box-flex: $value;
-  @include prefix((flex: $value), webkit ms);
+  @include prefix((flex: $value), webkit ms, $important);
 }
 
-@mixin flex-direction($value) {
+@mixin flex-direction($value, $important: 0) {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -moz-box-orient: vertical;
   -moz-box-direction: normal;
-  @include prefix((flex-direction: $value), webkit ms);
+  @include prefix((flex-direction: $value), webkit ms, $important);
 }
 
-@mixin flex-wrap($value: wrap) {
-  @include prefix((flex-wrap: $value), webkit ms);
+@mixin flex-wrap($value: wrap, $important: 0) {
+  @include prefix((flex-wrap: $value), webkit ms, $important);
 }
 
-@mixin justify-content($value) {
+@mixin justify-content($value, $important: 0) {
   -webkit-box-pack: $value;
   -moz-box-pack: $value;
   -ms-flex-pack: $value;
-  @include prefix((justify-content: $value), webkit);
+  @include prefix((justify-content: $value), webkit, $important);
 }
 
 @mixin keyframes($value) {
@@ -200,26 +206,26 @@ user-select
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=$angle, StartColorStr='#{$gradient1}', EndColorStr='#{$gradient2}');
 }
 
-@mixin object-fit($value) {
-  @include prefix((object-fit: $value), o);
+@mixin object-fit($value, $important: 0) {
+  @include prefix((object-fit: $value), o, $important);
 }
 
 @mixin transform($value, $important: 0) {
   @include prefix((transform: $value), webkit moz ms o, $important);
 }
 
-@mixin transform-origin($value) {
-  @include prefix((transform-origin: $value), webkit moz ms o);
+@mixin transform-origin($value, $important: 0) {
+  @include prefix((transform-origin: $value), webkit moz ms o, $important);
 }
 
-@mixin transition($value) {
+@mixin transition($value, $important: 0) {
   -webkit-transition: #{'-webkit-'+ $value};
   transition: #{'-webkit-'+ $value};
   transition: #{$value + ', '+ '-webkit-'+ $value};
-  @include prefix((transition: $value), webkit moz o);
+  @include prefix((transition: $value), webkit moz o, $important);
 }
 
-@mixin user-select($value) {
+@mixin user-select($value, $important: 0) {
   -webkit-touch-callout: $value;
-  @include prefix((user-select: $value), webkit khtml moz ms);
+  @include prefix((user-select: $value), webkit khtml moz ms, $important);
 }

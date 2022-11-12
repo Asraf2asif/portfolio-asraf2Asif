@@ -1,0 +1,135 @@
+@import '../../constants/styles/prefix';
+@import '../../constants/styles/mixin';
+@import '../../constants/styles/variable';
+
+.app__skills {
+    @include display-flex($flex:1, $display:false, $direction:column);
+    width: 100%;
+
+    &-container {
+        width: 80%;
+        margin-top: 3rem;
+        @include display-flex($direction:row);
+
+        @include media-break($break-nav-sm) {
+            width: 100%;
+            @include flex-direction(column);
+        }
+
+        .list {
+            @include display-flex($flex:1, $placement:center, $align-content:flex-start, $wrap:wrap);
+            margin-right: 5rem;
+
+            @include media-break($break-nav-sm) {
+                margin-right: 0;
+            }
+
+            &-item {
+                @include flex-direction(column);
+                text-align: center;
+                margin: 1rem;
+                @include transition(all 0.3s ease-in-out);
+
+                @include media-break($break-d-xl, min) {
+                    margin: 1rem 2rem;
+                }
+
+                div {
+                    @include size(60px);
+                    @include border-radius(50%);
+                    background-color: #fef4f5;
+
+                    @include media-break($break-d-xl, min) {
+                        @include size(90px);
+                    }
+
+                    @include media-break($break-d-sm) {
+                        @include size(50px);
+                    }
+
+                    img {
+                        @include size(70%);
+                    }
+
+                    &:hover {
+                        @include box-shadow(0 0 25px #fef4f5);
+                    }
+                }
+
+                p {
+                    font-weight: 500;
+                    margin-top: 0.5rem;
+
+                    @include media-break($break-d-xl, min) {
+                        margin-top: 1rem;
+                    }
+                }
+            }
+        }
+
+        .exp {
+            @include display-flex($flex:1, $placement:start, $direction:column);
+
+            @include media-break($break-nav-sm) {
+                margin-top: 2rem;
+            }
+
+            &-item {
+                width: 100%;
+                @include display-flex($placement:start, $direction:row);
+                margin: 1rem 0;
+
+                &-year {
+                    margin-right: 3rem;
+
+                    @include media-break($break-d-sm) {
+                        margin-right: 1rem;
+                    }
+
+                    p {
+                        font-weight: 800;
+                        color: $secondary-color;
+                    }
+                }
+
+                &-works {
+                    @include flex(0 0 auto);
+
+                    .work {
+                        @include display-flex($placement:start, $direction:column);
+                        margin-bottom: 1rem;
+                        cursor: pointer;
+
+                        h4 {
+                            font-weight: 500;
+                        }
+
+                        p {
+                            font-weight: 400;
+                            color: $gray-color;
+                            margin-top: 5px;
+                        }
+                    }
+
+                    .skills-tooltip {
+                        max-width: 300px !important;
+                        background-color: $white-color !important;
+                        @include box-shadow(0 0 25px rgba(0, 0, 0, 0.1), $important:1);
+                        @include border-radius(5px, $important:1);
+                        padding: 1rem !important;
+                        color: $gray-color !important;
+                        text-align: center !important;
+                        line-height: 1.5 !important;
+                        opacity: 1 !important;
+
+                        @include media-break($break-d-xl, min) {
+                            max-width: 500px !important;
+                            line-height: 2 !important;
+                            font-size: 1.75rem !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

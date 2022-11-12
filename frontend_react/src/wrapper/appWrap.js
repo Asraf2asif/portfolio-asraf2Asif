@@ -4,7 +4,10 @@ import { SocialMedia, NavigationDots } from '../components';
 const AppWrap = ({ comp: Comp, idName, classes }) =>
   function HOCApp() {
     return (
-      <div id={idName} className={`app__container ${classes && classes}`}>
+      <div
+        id={idName}
+        className={`app__container${classes ? ` ${classes}` : ''}`}
+      >
         <SocialMedia />
         <div className='app__wrapper app__flex-center '>
           <Comp />

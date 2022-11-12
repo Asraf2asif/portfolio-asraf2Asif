@@ -32,7 +32,7 @@
 }
 
 
-@mixin display-flex($flex:0, $display:true, $justify-content:0, $align-items:0, $placement:0, $direction:0, $wrap:0) {
+@mixin display-flex($flex:0, $display:true, $justify-content:0, $align-items:0, $align-content:0, $placement:0, $direction:0, $wrap:0) {
   @if $flex !=0 {
     @include flex($flex);
   }
@@ -44,9 +44,13 @@
   @if $justify-content !=0 {
     @include justify-content($justify-content);
   }
-
+  
   @if $align-items !=0 {
     @include align-items($align-items);
+  }
+
+  @if $align-content !=0 {
+    @include align-content($align-content);
   }
 
   @if $placement==start {

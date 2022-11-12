@@ -11,7 +11,7 @@ const About = () => {
     client
       .fetch(query)
       .then((data) => setAboutData(data))
-      .catch((err) => setAboutData([]));
+      .catch((err) => console.log(err));
   }, []);
 
   return (

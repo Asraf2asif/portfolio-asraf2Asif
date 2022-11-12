@@ -28,8 +28,7 @@ const Work = () => {
         setFilterWork(data);
       })
       .catch((err) => {
-        setWorks([]);
-        setFilterWork([]);
+        console.log(err);
       });
   }, []);
 
