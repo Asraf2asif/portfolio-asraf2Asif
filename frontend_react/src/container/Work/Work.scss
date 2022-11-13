@@ -8,7 +8,7 @@
 
     &-filter {
         @include display-flex($placement:center, $wrap:wrap, $direction:row);
-        margin: 4rem 0 2rem;
+        margin: 2rem 0 2rem;
 
         .item {
             padding: 0.5rem 1rem;
@@ -39,7 +39,7 @@
         .item {
             width: 270px;
             @include flex-direction(column);
-            margin: 2rem;
+            margin: 1rem;
             padding: 1rem;
             @include border-radius(0.5rem);
             background-color: #fff;

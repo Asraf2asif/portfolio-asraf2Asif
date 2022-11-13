@@ -17,17 +17,7 @@
   &__container {
     width: 100%;
     min-height: 100vh;
-
-    @include display-flex($direction:row);
-  }
-
-  &__flex-center {
-    @include flex-center();
-  }
-
-  &__wrapper {
-    @include display-flex($flex:1, $display:false, $direction:column);
-    width: 100%;
+    @include display-flex($flex:1, $placement:center, $direction:row);
     padding: 4rem 2rem;
 
     @include media-break($break-d-sm) {
@@ -35,86 +25,8 @@
     }
   }
 
-  &__social {
-    @include display-flex($justify-content:flex-end, $align-items:center, $direction:column);
-    padding: 1rem;
-
-    div {
-      @include size(40px);
-      @include border-radius(50%);
-      background-color: $white-color;
-      margin: 0.25rem 0;
-      border: 1px solid $lightGray-color;
-      @include flex-center();
-      @include transition(all 0.3s ease-in-out);
-
-      svg {
-        @include size(15px);
-        color: $gray-color;
-      }
-
-      &:hover {
-        background-color: $secondary-color;
-        border-color: $secondary-color;
-
-        svg {
-          color: $white-color;
-        }
-      }
-
-      @include media-break($break-d-xl, min) {
-        @include size(70px);
-        margin: 0.5rem 0;
-
-        svg {
-          @include size(30px);
-        }
-      }
-    }
-  }
-
-  &__navigation {
-    @include display-flex($placement:center, $direction:column);
-    padding: 1rem;
-
-    &-dot {
-      @include size(10px);
-      @include border-radius(50%);
-      background-color: #cbcbcb;
-      margin: 0.5rem;
-      @include transition(background-color 0.2s ease-in-out);
-
-      &:hover {
-        background-color: $secondary-color;
-      }
-
-      @include media-break($break-d-xl, min) {
-        @include size(20px);
-      }
-    }
-  }
-
-  @include media-break($break-d-sm-p-50) {
-
-    &__navigation,
-    &__social {
-      display: none;
-    }
-  }
-}
-
-.copyright {
-  width: 100%;
-  padding: 2rem 0 0;
-  @include display-flex($justify-content:flex-end, $align-items:flex-end, $direction:column);
-
-  p {
-    text-transform: uppercase;
-    color: $black-color;
-  }
-
-  @include media-break($break-d-sm-p-50) {
-    padding: 2rem;
+  &__flex-center {
+    @include flex-center();
   }
 }
 

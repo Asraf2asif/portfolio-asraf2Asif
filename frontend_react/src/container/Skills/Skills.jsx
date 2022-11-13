@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo } from 'react';
 import { motion } from 'framer-motion';
 import ReactTooltip from 'react-tooltip';
-import { AppWrap, MotionWrap } from '../../wrapper';
+import { MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
 import './Skills.scss';
 import { images } from '../../constants';
@@ -56,7 +56,7 @@ const expDefault = [
   { year: '2019', works: [{ name: 'ijk', company: '56', desc: 'V VI' }] },
 ];
 
-const Skills = memo(() => {
+const Skills = memo((props) => {
   const [skills, setSkills] = useState([...skillsDefault]);
   const [experiences, setExperiences] = useState([...expDefault]);
 
@@ -84,71 +84,68 @@ const Skills = memo(() => {
   }, []);
 
   return (
-    <div className='app__skills'>
-      <h2 className='head-text'>Skills & Experiences</h2>
+    <div {...props}>
+      <MotionWrap>
+        <h2 className='head-text'>Skills & Experiences</h2>
 
-      <div className='app__skills-container'>
-        <motion.div className='list'>
-          {skills.map(({ name = '', icon = '#' }, idx) => (
-            <motion.div
-              whileInView={{ opacity: [0, 1] }}
-              transition={{ duration: 0.5 }}
-              className='list-item app__flex-center'
-              key={`${name}_${idx}`}
-            >
-              <div className='app__flex-center'>
-                {typeof icon === 'object' ? (
-                  <img src={urlFor(icon)} alt={name} />
-                ) : (
-                  <img src={icon} alt={name} />
-                )}
-              </div>
-              <p className='p-text'>{name}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-        <div className='exp'>
-          {experiences.map(({ year = 2022, works = [] }, idx) => (
-            <motion.div className='exp-item' key={`${year}_${idx}`}>
-              <div className='exp-item-year'>
-                <p className='bold-text'>{year}</p>
-              </div>
-              <motion.div className='exp-item-works'>
-                {works.map(({ name = '', company = '', desc = '' }) => (
-                  <>
-                    <motion.div
-                      whileInView={{ opacity: [0, 1] }}
-                      transition={{ duration: 0.5 }}
-                      className='work'
-                      data-tip
-                      data-for={name}
-                      key={`${name}_${idx}`}
-                    >
-                      <h4 className='bold-text'>{name}</h4>
-                      <p className='p-text'>{company}</p>
-                    </motion.div>
-                    <ReactTooltip
-                      id={name}
-                      effect='solid'
-                      arrowColor='#fff'
-                      className='skills-tooltip'
-                    >
-                      {desc}
-                    </ReactTooltip>
-                  </>
-                ))}
+        <div className='app__skills-container'>
+          <div className='list'>
+            {skills.map(({ name = '', icon = '#' }, idx) => (
+              <motion.div
+                whileInView={{ opacity: [0, 1] }}
+                transition={{ duration: 0.5 }}
+                className='list-item app__flex-center'
+                key={`${name}_${idx}`}
+              >
+                <div className='app__flex-center'>
+                  {typeof icon === 'object' ? (
+                    <img src={urlFor(icon)} alt={name} />
+                  ) : (
+                    <img src={icon} alt={name} />
+                  )}
+                </div>
+                <p className='p-text'>{name}</p>
               </motion.div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
+          <div className='exp'>
+            {experiences.map(({ year = 2022, works = [] }, idx) => (
+              <motion.div className='exp-item' key={`${year}_${idx}`}>
+                <div className='exp-item-year'>
+                  <p className='bold-text'>{year}</p>
+                </div>
+                <motion.div className='exp-item-works'>
+                  {works.map(({ name = '', company = '', desc = '' }) => (
+                    <>
+                      <motion.div
+                        whileInView={{ opacity: [0, 1] }}
+                        transition={{ duration: 0.5 }}
+                        className='work'
+                        data-tip
+                        data-for={name}
+                        key={`${name}_${idx}`}
+                      >
+                        <h4 className='bold-text'>{name}</h4>
+                        <p className='p-text'>{company}</p>
+                      </motion.div>
+                      <ReactTooltip
+                        id={name}
+                        effect='solid'
+                        arrowColor='#fff'
+                        className='skills-tooltip'
+                      >
+                        {desc}
+                      </ReactTooltip>
+                    </>
+                  ))}
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
+      </MotionWrap>
     </div>
   );
 });
-const MotionWraped = MotionWrap({ comp: Skills, classes: 'app__skills' });
-const AppWraped = AppWrap({
-  comp: MotionWraped,
-  idName: 'skills',
-  classes: 'app__whitebg',
-});
-export default AppWraped;
+
+export default Skills;

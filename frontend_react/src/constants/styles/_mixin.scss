@@ -19,6 +19,25 @@
   @include align-items(center);
 }
 
+@mixin pad-x($value) {
+  padding-left: $value;
+        padding-right: $value;
+}
+@mixin margin-x($value) {
+  margin-left: $value;
+        margin-right: $value;
+}
+
+@mixin center-x-absolute() {
+  left: 50%;
+  @include transform(translateX(-50%));
+}
+
+@mixin center-y-absolute() {
+  top: 50%;
+  @include transform(translateY(-50%));
+}
+
 @mixin flex-start() {
   @include display-flex();
   @include justify-content(flex-start);

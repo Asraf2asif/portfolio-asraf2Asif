@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import { client, urlFor } from '../../client';
-import { AppWrap, MotionWrap } from '../../wrapper';
+import { MotionWrap } from '../../wrapper';
 import './Work.scss';
 import { variables } from '../../constants';
 
@@ -13,7 +13,7 @@ const animateCardState = [
   { y: 100, opacity: 0 },
 ];
 
-const Work = () => {
+const Work = (props) => {
   const [activeFilter, setActiveFilter] = useState(activeFilterAll);
   const [animateCard, setAnimateCard] = useState([animateCardState[0]]);
   const [works, setWorks] = useState([]);
@@ -49,105 +49,98 @@ const Work = () => {
   );
 
   return (
-    <div className='app__work'>
-      <h2 className='head-text'>
-        My creative<span> Portfolio</span>
-        <br />
-        Section
-      </h2>
-      <div className='app__work-filter'>
-        {workCatList.map((catName, idx) => (
-          <div
-            key={idx}
-            onClick={() => handleFilter(catName)}
-            className={`item app__flex-center p-text${
-              activeFilter === catName ? ' active' : ''
-            }`}
-          >
-            {catName}
-          </div>
-        ))}
-      </div>
-      <motion.div
-        animate={animateCard}
-        transition={{ duration: 0.5, delayChildren: 0.5 }}
-        className='app__work-portfolio'
-      >
-        {filterWork.map(
-          (
-            {
-              title = '',
-              description = '',
-              tags = '',
-              imgUrl = '#',
-              projectLink = '#',
-              codeLink = '#',
-            },
-            idx
-          ) => (
-            <div key={idx} className='item app__flex-center '>
-              <div className='item-thumb app__flex-center '>
-                <div
-                  className='img'
-                  style={{ backgroundImage: `url(${urlFor(imgUrl)})` }}
-                />
+    <div {...props}>
+      <MotionWrap reverseAnim>
+        <h2 className='head-text'>
+          My creative<span> Portfolio</span>
+          <br />
+          Section
+        </h2>
+        <div className='app__work-filter'>
+          {workCatList.map((catName, idx) => (
+            <div
+              key={idx}
+              onClick={() => handleFilter(catName)}
+              className={`item app__flex-center p-text${
+                activeFilter === catName ? ' active' : ''
+              }`}
+            >
+              {catName}
+            </div>
+          ))}
+        </div>
+        <motion.div
+          animate={animateCard}
+          transition={{ duration: 0.5, delayChildren: 0.5 }}
+          className='app__work-portfolio'
+        >
+          {filterWork.map(
+            (
+              {
+                title = '',
+                description = '',
+                tags = '',
+                imgUrl = '#',
+                projectLink = '#',
+                codeLink = '#',
+              },
+              idx
+            ) => (
+              <div key={idx} className='item app__flex-center '>
+                <div className='item-thumb app__flex-center '>
+                  <div
+                    className='img'
+                    style={{ backgroundImage: `url(${urlFor(imgUrl)})` }}
+                  />
 
-                <motion.div
-                  whileHover={{ opacity: [0, 1] }}
-                  transition={{
-                    duration: 0.25,
-                    ease: 'easeInOut',
-                    staggerChildren: 0.5,
-                  }}
-                  className='item-thumb-hover app__flex-center '
-                >
-                  <a href={projectLink} target='_blank' rel='noreferrer'>
-                    <motion.div
-                      whileInView={{ scale: [0, 1] }}
-                      whileHover={{ scale: [1, 0.9] }}
-                      transition={{ duration: 0.25 }}
-                      className='explore app__flex-center '
-                    >
-                      <AiFillEye />
-                    </motion.div>
-                  </a>
+                  <motion.div
+                    whileHover={{ opacity: [0, 1] }}
+                    transition={{
+                      duration: 0.25,
+                      ease: 'easeInOut',
+                      staggerChildren: 0.5,
+                    }}
+                    className='item-thumb-hover app__flex-center '
+                  >
+                    <a href={projectLink} target='_blank' rel='noreferrer'>
+                      <motion.div
+                        whileInView={{ scale: [0, 1] }}
+                        whileHover={{ scale: [1, 0.9] }}
+                        transition={{ duration: 0.25 }}
+                        className='explore app__flex-center '
+                      >
+                        <AiFillEye />
+                      </motion.div>
+                    </a>
 
-                  <a href={codeLink} target='_blank' rel='noreferrer'>
-                    <motion.div
-                      whileInView={{ scale: [0, 1] }}
-                      whileHover={{ scale: [1, 0.9] }}
-                      transition={{ duration: 0.25 }}
-                      className='code app__flex-center'
-                    >
-                      <AiFillGithub />
-                    </motion.div>
-                  </a>
-                </motion.div>
-              </div>
+                    <a href={codeLink} target='_blank' rel='noreferrer'>
+                      <motion.div
+                        whileInView={{ scale: [0, 1] }}
+                        whileHover={{ scale: [1, 0.9] }}
+                        transition={{ duration: 0.25 }}
+                        className='code app__flex-center'
+                      >
+                        <AiFillGithub />
+                      </motion.div>
+                    </a>
+                  </motion.div>
+                </div>
 
-              <div className='item-content app__flex-center '>
-                <h4 className='bold-text'>{title}</h4>
-                <p className='p-text'>{description}</p>
+                <div className='item-content app__flex-center '>
+                  <h4 className='bold-text'>{title}</h4>
+                  <p className='p-text'>{description}</p>
 
-                <div className='tag app__flex-center '>
-                  <p className='p-text'>{tags[0]}</p>
+                  <div className='tag app__flex-center '>
+                    <p className='p-text'>{tags[0]}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        )}
-      </motion.div>
+            )
+          )}
+        </motion.div>
+      </MotionWrap>
     </div>
   );
 };
-const MotionWraped = MotionWrap({
-  comp: Work,
-  classes: 'app__work',
-  reverseAnim: true,
-});
-const AppWraped = AppWrap({
-  comp: MotionWraped,
-  idName: 'work',
-  classes: 'app__primarybg',
-});
-export default AppWraped;
+
+export default Work;

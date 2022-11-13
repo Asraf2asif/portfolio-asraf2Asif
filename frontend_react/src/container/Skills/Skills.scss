@@ -7,11 +7,13 @@
     width: 100%;
 
     &-container {
-        width: 80%;
-        margin-top: 3rem;
+        @include pad-x(2rem);
         @include display-flex($direction:row);
+        margin-top: 3rem;
+        @include margin-x(auto);
 
         @include media-break($break-nav-sm) {
+            @include pad-x(1rem);
             width: 100%;
             @include flex-direction(column);
         }
@@ -19,8 +21,10 @@
         .list {
             @include display-flex($flex:1, $placement:center, $align-content:flex-start, $wrap:wrap);
             margin-right: 5rem;
+            max-width: 40%;
 
             @include media-break($break-nav-sm) {
+                max-width: 100%;
                 margin-right: 0;
             }
 
@@ -68,10 +72,15 @@
         }
 
         .exp {
-            @include display-flex($flex:1, $placement:start, $direction:column);
+            @include display-flex($flex:1, $justify-content:center, $align-items:flex-start, $direction:column);
 
             @include media-break($break-nav-sm) {
                 margin-top: 2rem;
+                padding-left: 1.5rem;
+            }
+
+            @include media-break($break-d-sm-p-50) {
+                padding-left: 0;
             }
 
             &-item {
@@ -93,7 +102,7 @@
                 }
 
                 &-works {
-                    @include flex(0 0 auto);
+                    @include flex(0 1 auto);
 
                     .work {
                         @include display-flex($placement:start, $direction:column);

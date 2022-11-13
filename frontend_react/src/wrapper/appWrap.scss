@@ -1,0 +1,23 @@
+@import '../constants/styles/prefix';
+@import '../constants/styles/mixin';
+@import '../constants/styles/variable';
+
+.copyright {
+  width: 100%;
+  padding: 2rem 0 0;
+  @include display-flex($justify-content:flex-end, $align-items:flex-end, $direction:column);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  @include media-break($break-d-sm-p-50) {
+    padding: 2rem;
+  }
+
+  p {
+    text-transform: uppercase;
+    color: $black-color;
+  }
+}

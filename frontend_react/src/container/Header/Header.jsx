@@ -3,7 +3,6 @@ import './Header.scss';
 import { MdWavingHand } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { images, variables } from '../../constants';
-import { AppWrap } from '../../wrapper';
 
 const scaleVariants = {
   whileInView: {
@@ -19,12 +18,9 @@ const scaleVariants = {
 const { headCircleList } = variables;
 const { circle: circleImg, profile: profileImg, bg: bgImg } = images;
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <header
-      className='app__header app__flex-center'
-      style={{ backgroundImage: `url(${bgImg})` }}
-    >
+    <header {...props} style={{ backgroundImage: `url(${bgImg})` }}>
       <motion.div
         whileInView={{
           x: [-100, 0],
@@ -88,4 +84,4 @@ const Header = () => {
   );
 };
 
-export default AppWrap({ comp: Header, idName: 'home' });
+export default Header;

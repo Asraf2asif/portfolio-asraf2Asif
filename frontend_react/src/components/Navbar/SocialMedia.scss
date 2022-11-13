@@ -1,0 +1,51 @@
+@import '../../constants/styles/prefix';
+@import '../../constants/styles/mixin';
+@import '../../constants/styles/variable';
+
+.app__social {
+    @include display-flex($justify-content:flex-end, $align-items:center, $direction:column);
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 20px;
+
+    @include media-break($break-d-sm-p-50) {
+        display: none;
+    }
+
+    @include media-break($break-d-xl, min) {
+        @include size(70px);
+        margin: 0.5rem 0;
+    }
+
+    div {
+        @include size(30px);
+        @include border-radius(50%);
+        background-color: $white-color;
+        margin: 0.35rem 0;
+        border: 1px solid $lightGray-color;
+        @include flex-center();
+        @include transition(all 0.3s ease-in-out);
+        cursor: pointer;
+
+        &:hover {
+            background-color: $secondary-color;
+            border-color: $secondary-color;
+            color: $white-color;
+        }
+
+        svg {
+            @include size(15px);
+            color: $gray-color;
+            cursor: pointer;
+
+            &:hover {
+                color: $white-color;
+            }
+
+            @include media-break($break-d-xl, min) {
+                @include size(30px);
+            }
+        }
+    }
+}

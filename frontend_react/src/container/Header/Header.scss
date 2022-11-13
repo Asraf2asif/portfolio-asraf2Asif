@@ -2,26 +2,14 @@
 @import '../../constants/styles/mixin';
 @import '../../constants/styles/variable';
 
-#home {
-    position: relative;
-    background: url('../../assets/bgIMG.png');
-    @include background-size(cover);
-    background-repeat: repeat;
-    background-position: center center;
-
-    .app__wrapper {
-        padding: 0;
-
-        .copyright {
-            display: none;
-        }
-    }
-}
-
 .app__header {
+    margin-top: 0;
     @include display-flex($flex:1, $display:false, $direction:row);
     @include size(100%);
     padding: 6rem 2rem 0;
+    @include background-size(cover);
+    background-repeat: repeat;
+    background-position: center center;
 
     @include media-break($break-d-xl, min) {
         padding-top: 8rem;
