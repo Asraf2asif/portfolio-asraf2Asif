@@ -140,7 +140,11 @@ const Work = () => {
     </div>
   );
 };
-const MotionWraped = MotionWrap({ comp: Work, classes: 'app__work' });
+const MotionWraped = MotionWrap({
+  comp: Work,
+  classes: 'app__work',
+  reverseAnim: true,
+});
 const AppWraped = AppWrap({
   comp: MotionWraped,
   idName: 'work',

@@ -64,23 +64,23 @@ const Skills = memo(() => {
     const expQuery = '*[_type == "experiences"]';
     const skillsQuery = '*[_type == "skills"]';
 
-    // client
-    //   .fetch(skillsQuery)
-    //   .then((data) => {
-    //     setSkills(data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    client
+      .fetch(skillsQuery)
+      .then((data) => {
+        if (data && data.length > 0) setSkills(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-    // client
-    //   .fetch(expQuery)
-    //   .then((data) => {
-    //     setExperiences(data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    client
+      .fetch(expQuery)
+      .then((data) => {
+        if (data && data.length > 0) setExperiences(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
@@ -96,11 +96,12 @@ const Skills = memo(() => {
               className='list-item app__flex-center'
               key={`${name}_${idx}`}
             >
-              <div
-                className='app__flex-center'
-              >
-                <img src={icon} alt={name} />
-                {/* <img src={urlFor(icon)} alt={name} /> */}
+              <div className='app__flex-center'>
+                {typeof icon === 'object' ? (
+                  <img src={urlFor(icon)} alt={name} />
+                ) : (
+                  <img src={icon} alt={name} />
+                )}
               </div>
               <p className='p-text'>{name}</p>
             </motion.div>

@@ -25,9 +25,9 @@ const About = () => {
         {aboutData.map(
           ({ title = '', description = '', imgUrl = '#' }, idx) => (
             <motion.div
-              whileInView={{ opacity: 1 }}
+              whileInView={{ x: [-300, 0], opacity: 1 }}
               whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.5, type: 'tween' }}
+              transition={{ duration: 1, type: 'tween', delay: 0 + idx / 5 }}
               className='app__profiles-item'
               key={title + idx}
             >
