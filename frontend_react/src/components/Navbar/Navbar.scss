@@ -60,7 +60,7 @@
                 @include flex-direction(column);
                 text-transform: uppercase;
                 font-weight: 500;
-                @include transition(all 0.3s ease-in-out);
+                @include transition($default-transition);
 
                 // alternate nav link hover
                 &:hover {
@@ -137,7 +137,7 @@
                         font-size: 1rem;
                         text-transform: uppercase;
                         font-weight: 500;
-                        @include transition(all 0.3s ease-in-out);
+                        @include transition($default-transition);
 
                         // alternate nav link hover
                         &:hover {

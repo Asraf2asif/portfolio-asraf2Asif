@@ -20,7 +20,10 @@ function App() {
           className='app__testimonial app__container app__primarybg'
           id='testimonial'
         />
-        <Footer className='app__footer app__container' id='footer' />
+        <Footer
+          className='app__footer app__container app__whitebg  app__flex-center'
+          id='contact'
+        />
       </AppWrap>
     </div>
   );

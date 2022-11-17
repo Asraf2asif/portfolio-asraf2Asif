@@ -17,7 +17,7 @@
             color: #000;
             font-weight: 800;
             cursor: pointer;
-            @include transition(all 0.3s ease);
+            @include transition($default-transition);
             margin: 0.5rem;
 
             &:hover,
@@ -45,7 +45,7 @@
             background-color: #fff;
             color: #000;
             cursor: pointer;
-            @include transition(all 0.3s ease);
+            @include transition($default-transition);
 
             &:hover {
                 @include box-shadow(0 0 25px rgba(0, 0, 0, 0.2));
@@ -84,7 +84,7 @@
                     background-color: rgba(0, 0, 0, 0.5);
                     @include border-radius(0.5rem);
                     opacity: 0;
-                    @include transition(all 0.3s ease);
+                    @include transition($default-transition);
 
                     div {
                         @include size(50px);
@@ -95,7 +95,7 @@
                         font-family: $font-base;
                         font-weight: 800;
                         cursor: pointer;
-                        @include transition(all 0.3s ease);
+                        @include transition($default-transition);
 
                         svg {
                             @include size(50%);

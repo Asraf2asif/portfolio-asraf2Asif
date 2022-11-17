@@ -28,6 +28,10 @@
   &__flex-center {
     @include flex-center();
   }
+
+  &__flex-center-col {
+    @include display-flex($placement:center, $direction:column);
+  }
 }
 
 .head-text {

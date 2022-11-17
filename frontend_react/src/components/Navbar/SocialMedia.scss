@@ -25,13 +25,12 @@
         margin: 0.35rem 0;
         border: 1px solid $lightGray-color;
         @include flex-center();
-        @include transition(all 0.3s ease-in-out);
+        @include transition($default-transition);
         cursor: pointer;
 
         &:hover {
             background-color: $secondary-color;
             border-color: $secondary-color;
-            color: $white-color;
         }
 
         svg {
@@ -45,6 +44,12 @@
 
             @include media-break($break-d-xl, min) {
                 @include size(30px);
+            }
+        }
+
+        &:hover {
+            svg {
+                color: $white-color;
             }
         }
     }

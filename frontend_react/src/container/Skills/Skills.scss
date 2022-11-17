@@ -32,7 +32,7 @@
                 @include flex-direction(column);
                 text-align: center;
                 margin: 1rem;
-                @include transition(all 0.3s ease-in-out);
+                @include transition($default-transition);
 
                 @include media-break($break-d-xl, min) {
                     margin: 1rem 2rem;
