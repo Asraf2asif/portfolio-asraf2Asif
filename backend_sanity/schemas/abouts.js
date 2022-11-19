@@ -4,6 +4,11 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'serial',
+      title: 'Serial',
+      type: 'number',
+    },
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
@@ -11,7 +16,14 @@ export default {
     {
       name: 'description',
       title: 'Description',
-      type: 'string',
+      type: 'array',
+      of: [
+        {
+          name: 'info',
+          title: 'Info',
+          type: 'string',
+        },
+      ],
     },
     {
       name: 'imgUrl',

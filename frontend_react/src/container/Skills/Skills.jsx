@@ -4,18 +4,6 @@ import ReactTooltip from 'react-tooltip';
 import { MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
 import './Skills.scss';
-import { images } from '../../constants';
-
-const { javascript, css, react, python, sass, git } = images;
-
-const skillsDefault = [
-  { name: 'Javascript', icon: javascript },
-  { name: 'React', icon: react },
-  { name: 'CSS', icon: css },
-  { name: 'Python', icon: python },
-  { name: 'SASS', icon: sass },
-  { name: 'Git', icon: git },
-];
 
 const expDefault = [
   {
@@ -57,7 +45,7 @@ const expDefault = [
 ];
 
 const Skills = memo((props) => {
-  const [skills, setSkills] = useState([...skillsDefault]);
+  const [skills, setSkills] = useState([]);
   const [experiences, setExperiences] = useState([...expDefault]);
 
   useEffect(() => {
@@ -86,29 +74,37 @@ const Skills = memo((props) => {
   return (
     <div {...props}>
       <MotionWrap>
-        <h2 className='head-text'>Skills & Experiences</h2>
+        <h2 className='head-text'>Skills & Abilities</h2>
 
         <div className='app__skills-container'>
           <div className='list'>
-            {skills.map(({ name = '', icon = '#' }, idx) => (
-              <motion.div
-                whileInView={{ opacity: [0, 1] }}
-                transition={{ duration: 0.5 }}
-                className='list-item app__flex-center'
-                key={`${name}_${idx}`}
-              >
-                <div className='app__flex-center'>
-                  {typeof icon === 'object' ? (
-                    <img src={urlFor(icon)} alt={name} />
-                  ) : (
-                    <img src={icon} alt={name} />
-                  )}
-                </div>
-                <p className='p-text'>{name}</p>
-              </motion.div>
+            {skills.map(({ skillsArr = [] }, idx) => (
+              <>
+                {/* <p className='p-text category'>{category}</p> */}
+                {skillsArr.map(({ name = '', icon = '#' }, idx) => (
+                  <motion.div
+                    whileInView={{ opacity: [0, 1] }}
+                    transition={{ duration: 0.5 }}
+                    className='list-item app__flex-center'
+                    key={`${name}_${idx}`}
+                  >
+                    <div
+                      className='app__flex-center'
+                      style={{
+                        backgroundImage:
+                          typeof icon === 'object'
+                            ? `url(${urlFor(icon)})`
+                            : `url(${icon})`,
+                      }}
+                    ></div>
+                    <p className='p-text'>{name}</p>
+                  </motion.div>
+                ))}
+                <div className='list-item-end'></div>
+              </>
             ))}
           </div>
-          <div className='exp'>
+          {/* <div className='exp'>
             {experiences.map(({ year = 2022, works = [] }, idx) => (
               <motion.div className='exp-item' key={`${year}_${idx}`}>
                 <div className='exp-item-year'>
@@ -141,7 +137,7 @@ const Skills = memo((props) => {
                 </motion.div>
               </motion.div>
             ))}
-          </div>
+          </div> */}
         </div>
       </MotionWrap>
     </div>

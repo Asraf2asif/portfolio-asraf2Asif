@@ -3,53 +3,11 @@ import './About.scss';
 import { motion } from 'framer-motion';
 import { client, urlFor } from '../../client';
 import { MotionWrap } from '../../wrapper';
-import { images } from '../../constants';
-
-const { about01, about02, about03, about04, node } = images;
-
-const aboutsDefault = [
-  {
-    title: 'Lorem ipsum dolor sit amet consectetur adipisicing',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ea voluptatibus quibusdam optio blanditiis maxime nihil odit voluptas at in.',
-    imgUrl: about01,
-  },
-  {
-    title: 'Lorem ipsum dolor sit amet consectetur adipisicing',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ea voluptatibus quibusdam optio blanditiis maxime nihil odit voluptas at in.',
-    imgUrl: about02,
-  },
-  {
-    title: 'Lorem ipsum dolor sit amet consectetur adipisicing',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ea voluptatibus quibusdam optio blanditiis maxime nihil odit voluptas at in.',
-    imgUrl: about03,
-  },
-  {
-    title: 'Lorem ipsum dolor sit amet consectetur adipisicing',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ea voluptatibus quibusdam optio blanditiis maxime nihil odit voluptas at in.',
-    imgUrl: about04,
-  },
-  {
-    title: 'Lorem ipsum dolor sit amet consectetur adipisicing',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ea voluptatibus quibusdam optio blanditiis maxime nihil odit voluptas at in.',
-    imgUrl: node,
-  },
-  {
-    title: 'Lorem ipsum dolor sit amet consectetur adipisicing',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ea voluptatibus quibusdam optio blanditiis maxime nihil odit voluptas at in.',
-    imgUrl: about02,
-  },
-];
 
 const About = (props) => {
-  const [aboutData, setAboutData] = useState([...aboutsDefault]);
+  const [aboutData, setAboutData] = useState([]);
   useEffect(() => {
-    const query = '*[_type == "abouts"]';
+    const query = '*[_type == "abouts"] | order(serial asc)';
     client
       .fetch(query)
       .then((data) => {
@@ -68,12 +26,12 @@ const About = (props) => {
         </h2>
         <div className='app__profiles'>
           {aboutData.map(
-            ({ title = '', description = '', imgUrl = '#' }, idx) => (
+            ({ title = '', description = [], imgUrl = '#' }, idx) => (
               <motion.div
-                whileInView={{ x: [idx * -100, 0], opacity: 1 }}
+                whileInView={{ x: [idx * -50, 0], opacity: 1 }}
                 whileHover={{ scale: 1.1 }}
                 transition={{
-                  duration: 0.8,
+                  duration: 1,
                   type: 'tween',
                   delay: 0 + idx / 8,
                 }}
@@ -90,7 +48,11 @@ const About = (props) => {
                   }}
                 />
                 <h2 className='bold-text'>{title}</h2>
-                <p className='p-text'>{description}</p>
+                {description.map((info, idx) => (
+                  <p className='p-text' key={idx}>
+                    {info}
+                  </p>
+                ))}
               </motion.div>
             )
           )}

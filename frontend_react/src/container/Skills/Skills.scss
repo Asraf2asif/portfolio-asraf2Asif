@@ -19,19 +19,31 @@
         }
 
         .list {
-            @include display-flex($flex:1, $placement:center, $align-content:flex-start, $wrap:wrap);
+            @include display-flex($flex:1, $justify-content:center, $align-items:flex-start, $align-content:flex-start, $wrap:wrap);
             margin-right: 5rem;
-            max-width: 40%;
+            max-width: 50%;
 
             @include media-break($break-nav-sm) {
                 max-width: 100%;
                 margin-right: 0;
             }
 
+            .category {
+                @include transform(rotate(-90deg));
+                // border: 1px dashed #d3d3d3;
+                padding: 5px;
+                text-transform: uppercase;
+                font-size: 0.7rem;
+                color: #d3d3d3;
+                width: 73px;
+                text-align: center;
+                margin-top: 2rem;
+            }
+
             &-item {
                 @include flex-direction(column);
                 text-align: center;
-                margin: 1rem;
+                margin: .7rem;
                 @include transition($default-transition);
 
                 @include media-break($break-d-xl, min) {
@@ -39,9 +51,10 @@
                 }
 
                 div {
-                    @include size(60px);
-                    @include border-radius(50%);
-                    border: 2px solid $primary-color;
+                    @include size(40px);
+                    @include background-size(contain);
+                    background-repeat: no-repeat;
+                    background-position: center center;
 
                     @include media-break($break-d-xl, min) {
                         @include size(90px);
@@ -49,10 +62,6 @@
 
                     @include media-break($break-d-sm) {
                         @include size(50px);
-                    }
-
-                    img {
-                        @include size(70%);
                     }
 
                     &:hover {
@@ -63,11 +72,17 @@
                 p {
                     font-weight: 500;
                     margin-top: 0.5rem;
+                    color: #aab4c3;
 
                     @include media-break($break-d-xl, min) {
                         margin-top: 1rem;
                     }
                 }
+            }
+
+            &-item-end {
+                width: 100%;
+                margin-top: .8rem;
             }
         }
 
