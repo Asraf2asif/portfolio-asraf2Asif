@@ -25,8 +25,6 @@ const Footer = (props) => {
     setIsFormSubmitted(false);
   };
 
-  // console.log([nameRef, emailRef, messageRef]);
-
   const sendEmail = useCallback((e) => {
     e.preventDefault();
     setLoading(true);

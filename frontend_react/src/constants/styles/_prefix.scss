@@ -83,6 +83,7 @@ transform
 transform-origin
 transition
 user-select
+word-break
 */
 
 @mixin align-content($value, $important: 0) {
@@ -228,4 +229,8 @@ user-select
 @mixin user-select($value, $important: 0) {
   -webkit-touch-callout: $value;
   @include prefix((user-select: $value), webkit khtml moz ms, $important);
+}
+
+@mixin word-break($value, $important: 0) {
+  @include prefix((word-break: $value), ms, $important);
 }

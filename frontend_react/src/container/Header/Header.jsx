@@ -67,10 +67,18 @@ const Header = (props) => {
           alt='profile_circle'
           className='overlay_circle'
         />
-        <div className='bio'>
-          A multi-talented programmer in a wide range of design disciplines &
-          development capabilities
-        </div>
+        <motion.div
+          whileInView={{
+            opacity: [0, 1],
+          }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
+          className='bio'
+        >
+          A programmer with a wide range of
+          <br />
+          design disciplines
+          <br />& development capabilities
+        </motion.div>
       </motion.div>
 
       <motion.div

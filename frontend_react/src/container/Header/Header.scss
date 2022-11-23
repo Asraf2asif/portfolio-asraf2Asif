@@ -103,15 +103,23 @@
 
         .bio {
             position: absolute;
-            bottom: 0;
+            bottom: -20px;
             padding: 1rem 1rem;
             z-index: 5;
-            background: rgba(171, 132, 120, .5);
+            background: rgba(208, 215, 225, .8);
             text-align: center;
-            color: #030303;
-            line-height: 1.6;
-            @include box-shadow(0 0 20px rgba(0, 0, 0, .1));
+            color: #333333;
+            line-height: 1.7;
+            @include box-shadow(0 0 20px rgba(63, 60, 60, .5));
             text-transform: capitalize;
+            font-weight: 700;
+            font-family: "Merienda", cursive;
+            font-size: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: block;
+            min-width: 350px;
+            @include word-break(keep-all);
         }
     }
 
