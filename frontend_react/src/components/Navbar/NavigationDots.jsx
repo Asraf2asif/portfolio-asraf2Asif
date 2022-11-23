@@ -9,6 +9,7 @@ const NavigationDots = () => {
     <div className='app__navigation'>
       {menuList.map((item, idx) => (
         <a href={`#${item}`} key={item + idx} className='app__navigation-dot'>
+          <p>{item.charAt(0)}</p>
           <p>{item}</p>
         </a>
       ))}

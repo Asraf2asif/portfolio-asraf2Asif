@@ -1,55 +1,16 @@
 import React, { useState, useEffect, memo } from 'react';
 import { motion } from 'framer-motion';
-import ReactTooltip from 'react-tooltip';
+// import ReactTooltip from 'react-tooltip';
 import { MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
 import './Skills.scss';
 
-const expDefault = [
-  {
-    year: '2022',
-    works: [
-      {
-        name: 'elit. Ullam reprehenderit',
-        company: 'Lorem ipsum dolor sit amet consectetur adipisicing',
-        desc: 'delectus repellendus sapiente nostrum dolorem!',
-      },
-      {
-        name: 'elit. Ullam reprehenderit',
-        company: 'Lorem ipsum dolor sit amet consectetur adipisicing',
-        desc: 'delectus repellendus sapiente nostrum dolorem!',
-      },
-      {
-        name: 'elit. Ullam reprehenderit',
-        company: 'Lorem ipsum dolor sit amet consectetur adipisicing',
-        desc: 'delectus repellendus sapiente nostrum dolorem!',
-      },
-    ],
-  },
-  {
-    year: '2021',
-    works: [
-      {
-        name: 'elit. Ullam reprehenderit',
-        company: 'Lorem ipsum dolor sit amet consectetur adipisicing',
-        desc: 'delectus repellendus sapiente nostrum dolorem!',
-      },
-      {
-        name: 'elit. Ullam reprehenderit',
-        company: 'Lorem ipsum dolor sit amet consectetur adipisicing',
-        desc: 'delectus repellendus sapiente nostrum dolorem!',
-      },
-    ],
-  },
-  { year: '2019', works: [{ name: 'ijk', company: '56', desc: 'V VI' }] },
-];
-
 const Skills = memo((props) => {
   const [skills, setSkills] = useState([]);
-  const [experiences, setExperiences] = useState([...expDefault]);
+  // const [experiences, setExperiences] = useState([...expDefault]);
 
   useEffect(() => {
-    const expQuery = '*[_type == "experiences"]';
+    // const expQuery = '*[_type == "experiences"]';
     const skillsQuery = '*[_type == "skills"]';
 
     client
@@ -61,14 +22,14 @@ const Skills = memo((props) => {
         console.log(err);
       });
 
-    client
-      .fetch(expQuery)
-      .then((data) => {
-        if (data && data.length > 0) setExperiences(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // client
+    //   .fetch(expQuery)
+    //   .then((data) => {
+    //     if (data && data.length > 0) setExperiences(data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }, []);
 
   return (

@@ -1,0 +1,46 @@
+@import '../../constants/styles/prefix';
+@import '../../constants/styles/mixin';
+@import '../../constants/styles/variable';
+
+.app__service {
+    @include display-flex($flex:1, $display:false, $direction:column);
+    width: 100%;
+
+    .app__profiles {
+        @include display-flex($justify-content:center, $align-items:flex-start, $wrap:wrap);
+        margin-top: 2rem;
+
+        &-item {
+            width: 210px;
+            @include display-flex($placement:start, $direction:column);
+            margin: 2rem;
+            background: $white-color;
+
+            @include media-break($break-d-xl, min) {
+                width: 370px;
+                margin: 2rem 4rem;
+            }
+
+            .img {
+                @include size(100%, 170px);
+                @include background-size(80%);
+                @include border-radius(15px);
+                background-repeat: no-repeat;
+                background-position: center center;
+                border: 2px solid $primary-color;
+
+                @include media-break($break-d-xl, min) {
+                    height: 320px;
+                }
+            }
+
+            h2 {
+                margin-top: 15px;
+            }
+
+            p {
+                margin-top: 5px;
+            }
+        }
+    }
+}

@@ -37,6 +37,10 @@ import nb from '../../assets/nb.png';
 import skype from '../../assets/skype.png';
 import spotify from '../../assets/spotify.png';
 
+import frontend from '../../assets/frontend.png';
+import maintenance from '../../assets/maintenance.png';
+import backend from '../../assets/backend.png';
+
 export const images = {
   bg,
   email,
@@ -72,4 +76,7 @@ export const images = {
   nb,
   skype,
   spotify,
+  frontend,
+  maintenance,
+  backend,
 };

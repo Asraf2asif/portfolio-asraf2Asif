@@ -42,7 +42,7 @@ const Header = (props) => {
 
           <div className='tag-cmp app__flex-center'>
             <p className='p-text'>Web Developer</p>
-            <p className='p-text'>Freelancer</p>
+            <p className='p-text'>UI/UX Designer</p>
           </div>
         </div>
       </motion.div>
@@ -67,6 +67,10 @@ const Header = (props) => {
           alt='profile_circle'
           className='overlay_circle'
         />
+        <div className='bio'>
+          A multi-talented programmer in a wide range of design disciplines &
+          development capabilities
+        </div>
       </motion.div>
 
       <motion.div
@@ -74,9 +78,14 @@ const Header = (props) => {
         whileInView={scaleVariants.whileInView}
         className='app__header-circles'
       >
-        {headCircleList.map((headCircleImg, idx) => (
+        {headCircleList.map(({ name = '', icon = '' }, idx) => (
           <div className='circle-cmp app__flex-center' key={`circle-${idx}`}>
-            <img src={headCircleImg} alt={`circle-${headCircleImg}`} />
+            <img src={icon} alt={`circle-${icon}`} />
+            <div className='badge app__flex-center'>
+              <div>
+                <p className='p-text'>{name}</p>
+              </div>
+            </div>
           </div>
         ))}
       </motion.div>
