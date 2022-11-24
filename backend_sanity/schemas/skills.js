@@ -4,6 +4,11 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'serial',
+      title: 'Serial',
+      type: 'number',
+    },
+    {
       name: 'category',
       title: 'Category',
       type: 'string',

@@ -16,14 +16,14 @@
     // nav logo holder
     &-logo {
         @include display-flex($justify-content:flex-start, $align-items:center);
+        width: 171px;
+        position: absolute;
+        top: -10px;
 
         // nav logo img
         img {
-            @include size(99px, 20px);
-
-            @include media-break($break-d-xl, min) {
-                @include size(180px, 40px);
-            }
+            width: 100%;
+            height: auto;
         }
     }
 
