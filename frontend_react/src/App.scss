@@ -35,11 +35,18 @@
 }
 
 .head-text {
-  font-size: 2.75rem;
-  font-weight: 800;
   text-align: center;
-  color: $black-color;
-  text-transform: capitalize;
+
+  h2 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    text-align: center;
+    color: $black-color;
+    text-transform: capitalize;
+    border-bottom: 2px solid $lightGray-color;
+    padding-bottom: 5px;
+    display: inline-block;
+  }
 
   span {
     color: $secondary-color;

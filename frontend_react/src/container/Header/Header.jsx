@@ -36,7 +36,7 @@ const Header = (props) => {
             </span>
             <div>
               <p className='p-text'>Hello, I am</p>
-              <p className='head-text'>Asif</p>
+              <p className='name'>Asif</p>
             </div>
           </div>
 

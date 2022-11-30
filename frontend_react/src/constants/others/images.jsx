@@ -27,7 +27,6 @@ export const images = {
   email,
   css,
   figma,
-  flutter,
   git,
   html,
   javascript,

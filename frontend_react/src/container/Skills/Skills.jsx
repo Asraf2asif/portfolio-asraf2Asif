@@ -11,7 +11,7 @@ const Skills = memo((props) => {
 
   useEffect(() => {
     // const expQuery = '*[_type == "experiences"]';
-    const skillsQuery = '*[_type == "skills"]';
+    const skillsQuery = '*[_type == "skills"] | order(serial asc)';
 
     client
       .fetch(skillsQuery)
@@ -35,7 +35,9 @@ const Skills = memo((props) => {
   return (
     <div {...props}>
       <MotionWrap>
-        <h2 className='head-text'>Skills & Abilities</h2>
+        <div className='head-text'>
+          <h2>Skills & Abilities</h2>
+        </div>
 
         <div className='app__skills-container'>
           <div className='list'>

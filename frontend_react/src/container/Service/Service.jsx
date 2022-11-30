@@ -19,14 +19,19 @@ const Service = (props) => {
   return (
     <div {...props}>
       <MotionWrap>
-        <h2 className='head-text'>
-          I Know that<span> Good Apps</span>
-          <br />
-          means<span> Good Business</span>
-        </h2>
+        <div className='head-text'>
+          <h2>
+            I Know that<span> Good Apps</span>
+            <br />
+            means<span> Good Business</span>
+          </h2>
+        </div>
         <div className='app__profiles'>
           {serviceData.map(
-            ({ title = '', description = [], imgUrl = '#' }, idx) => (
+            (
+              { title = '', description = [], imgUrl = '#', color = '' },
+              idx
+            ) => (
               <motion.div
                 whileInView={{ x: [idx * -50, 0], opacity: 1 }}
                 whileHover={{ scale: 1.1 }}
@@ -37,17 +42,43 @@ const Service = (props) => {
                 }}
                 className='app__profiles-item'
                 key={title + idx}
+                style={{
+                  ...(color !== '' && {
+                    borderColor: 'rgba(' + color + ',.5)',
+                  }),
+                }}
               >
                 <div
-                  className='img'
+                  className='img-holder'
                   style={{
-                    backgroundImage:
-                      typeof imgUrl === 'object'
-                        ? `url(${urlFor(imgUrl)})`
-                        : `url(${imgUrl})`,
+                    ...(color !== '' && {
+                      borderColor: 'rgba(' + color + ',.5)',
+                    }),
                   }}
-                />
-                <h2 className='bold-text'>{title}</h2>
+                >
+                  <div
+                    className='img'
+                    style={{
+                      backgroundImage:
+                        typeof imgUrl === 'object'
+                          ? `url(${urlFor(imgUrl)})`
+                          : `url(${imgUrl})`,
+                      ...(color !== '' && {
+                        backgroundColor: 'rgb(' + color + ')',
+                      }),
+                    }}
+                  />
+                </div>
+                <h2
+                  style={{
+                    ...(color !== '' && {
+                      color: 'rgb(' + color + ')',
+                      borderBottomColor: 'rgba(' + color + ',.5)',
+                    }),
+                  }}
+                >
+                  {title}
+                </h2>
                 {description.map((info, idx) => (
                   <p className='p-text' key={idx}>
                     {info}

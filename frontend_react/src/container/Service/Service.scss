@@ -8,39 +8,70 @@
 
     .app__profiles {
         @include display-flex($justify-content:center, $align-items:flex-start, $wrap:wrap);
-        margin-top: 2rem;
+
 
         &-item {
-            width: 210px;
+            @include size(220px, 320px);
             @include display-flex($placement:start, $direction:column);
-            margin: 2rem;
+            margin: 1.5rem;
+            margin-top: 6rem;
             background: $white-color;
+            border: 1px solid;
+            @include border-radius(10px);
+            padding: 20px;
+            position: relative;
 
             @include media-break($break-d-xl, min) {
                 width: 370px;
-                margin: 2rem 4rem;
+                margin: 1.5rem 4rem;
+                margin-top: 6rem;
             }
 
-            .img {
-                @include size(100%, 170px);
-                @include background-size(80%);
-                @include border-radius(15px);
-                background-repeat: no-repeat;
-                background-position: center center;
-                border: 2px solid $primary-color;
+            .img-holder {
+                position: absolute;
+                @include size(100px);
+                background: $white-color;
+                border: 2px solid;
+                padding: 4px;
+                @include border-radius(50%);
+                top: 0;
+                left: 50%;
+                @include transform(translate(-50%, -50%));
 
-                @include media-break($break-d-xl, min) {
-                    height: 320px;
+                .img {
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    @include size(100%);
+                    @include border-radius(50%);
+                    @include background-size(62.5%);
                 }
             }
 
             h2 {
-                margin-top: 15px;
+                text-align: left;
+                margin: 45px 0 7px 0;
+                border-bottom: 1px dashed;
+                padding-bottom: 5px;
+                font-size: 17px;
+                font-weight: bold;
+                font-family: 'Montserrat';
             }
 
             p {
-                margin-top: 5px;
+                padding-top: 7px;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 400;
+                font-size: .87rem;
+                line-height: 1.7;
+                color: $black-color;
             }
         }
     }
+
+    // background: rgba(244, 143, 177, 1);
+    // background: rgba(129, 199, 132, 1);
+    // background: rgba(159, 168, 218, 1);
+    // background: rgba(128, 203, 196, 1);
+
 }

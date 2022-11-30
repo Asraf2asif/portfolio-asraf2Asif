@@ -81,7 +81,7 @@
     }
 
     &-form {
-        width: 60%;
+        min-width: 100px;
         @include flex-direction(column);
         margin: 1rem 2rem;
         @include margin-x(auto);

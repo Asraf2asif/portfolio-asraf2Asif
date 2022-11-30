@@ -51,11 +51,13 @@ const Work = (props) => {
   return (
     <div {...props}>
       <MotionWrap reverseAnim>
-        <h2 className='head-text'>
-          My creative<span> Portfolio</span>
-          <br />
-          Section
-        </h2>
+        <div className='head-text'>
+          <h2>
+            My creative<span> Portfolio</span>
+            <br />
+            Section
+          </h2>
+        </div>
         <div className='app__work-filter'>
           {workCatList.map((catName, idx) => (
             <div

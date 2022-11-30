@@ -84,7 +84,9 @@ const Testimonial = (props) => {
   return (
     <div {...props}>
       <MotionWrap reverseAnim>
-        <h2 className='head-text'>Testimonial Section</h2>
+        <div className='head-text'>
+          <h2>Testimonial Section</h2>
+        </div>
         {testimonials.length && (
           <div className='app__flex-center-col'>
             <div className='app__testimonial-item app__flex-center'>

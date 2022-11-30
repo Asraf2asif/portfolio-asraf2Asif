@@ -26,6 +26,11 @@ export default {
       ],
     },
     {
+      name: 'color',
+      title: 'Color',
+      type: 'string',
+    },
+    {
       name: 'imgUrl',
       title: 'ImgUrl',
       type: 'image',
