@@ -6,130 +6,194 @@
     @include display-flex($flex:1, $display:false, $direction:column);
     width: 100%;
 
-    &-filter {
-        @include display-flex($placement:center, $wrap:wrap, $direction:row);
-        margin: 2rem 0 2rem;
-
-        .item {
-            padding: 0.5rem 1rem;
-            @include border-radius(0.5rem);
-            background-color: #fff;
-            color: #000;
-            font-weight: 800;
-            cursor: pointer;
-            @include transition($default-transition);
-            margin: 0.5rem;
-
-            &:hover,
-            &.active {
-                background-color: $secondary-color;
-                color: #fff;
-            }
-
-            @include media-break($break-d-xl, min) {
-                padding: 1rem 2rem;
-                @include border-radius(0.85rem);
-            }
-        }
-    }
-
     &-portfolio {
-        @include display-flex($placement:center, $wrap:wrap);
+        margin: 1rem 2rem;
 
         .item {
-            width: 270px;
-            @include flex-direction(column);
-            margin: 1rem;
-            padding: 1rem;
-            @include border-radius(0.5rem);
-            background-color: #fff;
-            color: #000;
-            cursor: pointer;
             @include transition($default-transition);
+            max-width: 1200px;
+            margin: 2rem 0;
 
-            &:hover {
-                @include box-shadow(0 0 25px rgba(0, 0, 0, 0.2));
+
+
+            @include media-break($break-d-lg, min) {
+                @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
+
+                &:hover {
+                    @include box-shadow(0 0 25px rgba(0, 0, 0, 0.2));
+                }
             }
 
-            @include media-break($break-d-xl, min) {
-                width: 470px;
-                padding: 1.25rem;
-                @include border-radius(0.75rem);
+            @include media-break($break-d-lg) {
+                @include flex-direction(column);
             }
 
-            @include media-break($break-d-xs) {
-                width: 100%;
-                margin: 1rem;
-            }
 
             &-thumb {
-                @include size(100%, 230px);
+                @include flex(1);
+
+                @include media-break($break-d-lg) {
+                    @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
+                }
+            }
+
+            &-content {
                 position: relative;
+                @include display-flex($justify-content:space-between, $direction:column);
+                background: #37474F;
 
-                @include media-break($break-d-xl, min) {
-                    height: 350px;
+                @include media-break($break-d-lg) {
+                    height: auto;
+                    @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
                 }
 
-                .img {
-                    @include size(100%);
-                    @include border-radius(0.5rem);
-                    @include background-size(cover);
-                    background-repeat: no-repeat;
-                    background-position: center center;
+                h4 {
+                    font-family: 'Merienda', cursive;
+                    font-weight: 700;
+                    font-size: 1rem;
+                    color: #F6FAF9;
+                    padding-bottom: 5px;
+                    border-bottom: 1px solid #455A64;
+                    margin-bottom: 10px;
                 }
 
-                &-hover {
-                    @include pos-abs($all:0);
-                    @include size(100%);
-                    background-color: rgba(0, 0, 0, 0.5);
-                    @include border-radius(0.5rem);
-                    opacity: 0;
-                    @include transition($default-transition);
+                .info {
+                    @include display-flex($align-items:flex-end, $direction:column);
+                    max-width: 342px;
+                    padding: 20px;
 
-                    div {
-                        @include size(50px);
+                    @include media-break($break-d-lg) {
+                        max-width: 750px;
+                    }
+
+                    h5,
+                    p {
+                        margin-bottom: 10px;
+                    }
+
+                    h5 {
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 700;
+                        font-size: 12px;
+                        text-align: right;
+                        color: #80CBC4;
+
+                    }
+
+                    p {
+                        font-family: 'Source Sans Pro';
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 15px;
+                        line-height: 1.6;
+                        color: rgba(236, 239, 241, .84);
+                        text-align: right;
+                    }
+                }
+
+                .tech {
+                    @include display-flex($align-items:flex-end, $direction:column);
+                    max-width: 342px;
+                    padding: 20px;
+                    padding-top: 0;
+
+                    @include media-break($break-d-lg) {
+                        max-width: 750px;
+                    }
+
+                    .tags {
+                        @include flex-wrap();
+                        @include justify-content(flex-end);
+
+                        .tag {
+                            background: #4A626C;
+                            padding: 5px 10px;
+                            border-radius: 15px;
+                            font-family: 'Source Sans Pro';
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 14px;
+                            line-height: 1.57;
+                            color: #CFD8DC;
+                            display: inline-block;
+                            margin: 5px 5px;
+                        }
+                    }
+                }
+
+                .links {
+                    @include display-flex($justify-content:space-between, $direction:row-reverse);
+                    width: 85px;
+                    margin: 20px;
+                    margin-left: auto;
+                    margin-top: 0;
+
+                    a {
+                        @include size(34px);
                         @include border-radius(50%);
-                        background-color: rgba(0, 0, 0, 0.5);
-                        color: #fff;
-                        margin: 1rem;
-                        font-family: $font-base;
-                        font-weight: 800;
-                        cursor: pointer;
+                        background-color: #263238;
+                        border: 1px solid $lightGray-color;
+                        @include flex-center();
                         @include transition($default-transition);
+                        cursor: pointer;
+                        text-decoration: none;
+
+                        &:hover {
+                            background-color: $white-color;
+                        }
 
                         svg {
-                            @include size(50%);
+                            @include size(17px);
                             color: $white-color;
+                            cursor: pointer;
+
+                            &:hover {
+                                color: #37474F;
+                            }
+
+                            @include media-break($break-d-xl, min) {
+                                @include size(30px);
+                            }
+                        }
+
+                        &:hover {
+                            svg {
+                                color: #37474F;
+                            }
                         }
                     }
                 }
             }
 
-            &-content {
-                padding: 0.5rem;
-                width: 100%;
-                position: relative;
-                @include flex-direction(column);
+            &:nth-child(2n+2) {
+                @include flex-direction(row-reverse);
 
-                h4 {
-                    margin-top: 1rem;
-                    line-height: 1.5;
+                @include media-break($break-d-lg) {
+                    @include flex-direction(column);
+                }
 
-                    @include media-break($break-d-xl, min) {
-                        margin-top: 3rem;
+                .item-content {
+                    .info {
+                        @include align-items(flex-start);
+
+                        p {
+                            text-align: left;
+                        }
                     }
-                }
 
-                &>p {
-                    margin-top: 10px;
-                }
+                    .tech {
+                        @include align-items(flex-start);
 
-                .tag {
-                    position: absolute;
-                    padding: 0.5rem 1rem;
-                    @include border-radius(10px);
-                    background-color: #fff;
-                    top: -25px;
+                        .tags {
+                            @include justify-content(flex-start);
+                        }
+
+                    }
+
+                    .links {
+                        margin-left: 20px;
+
+                    }
                 }
             }
         }

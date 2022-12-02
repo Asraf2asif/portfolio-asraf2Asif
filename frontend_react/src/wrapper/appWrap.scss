@@ -3,7 +3,6 @@
 @import '../constants/styles/variable';
 
 .copyright {
-  padding: 2rem 0 0;
   @include display-flex($justify-content:flex-end, $align-items:flex-end, $direction:column);
   position: fixed;
   bottom: 0;

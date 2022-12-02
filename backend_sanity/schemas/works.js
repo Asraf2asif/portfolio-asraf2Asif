@@ -4,6 +4,11 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'serial',
+      title: 'Serial',
+      type: 'number',
+    },
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
@@ -24,13 +29,36 @@ export default {
       title: 'Code Link',
       type: 'string',
     },
+
     {
-      name: 'imgUrl',
-      title: 'ImageUrl',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'imgUrls',
+      title: 'ImageUrls',
+      type: 'array',
+      of: [
+        {
+          name: 'imgUrl',
+          title: 'ImageUrl',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+    },
+    {
+      name: 'imgUrlsM',
+      title: 'ImageUrlsM',
+      type: 'array',
+      of: [
+        {
+          name: 'imgUrlM',
+          title: 'ImageUrlM',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
     },
 
     {

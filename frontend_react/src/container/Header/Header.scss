@@ -79,6 +79,10 @@
                 @include flex-direction(column);
                 margin-top: 2rem;
 
+                @include media-break($break-d-lg) {
+                    display: none;
+                }
+
                 p {
                     width: 100%;
                     line-height: 1.9;
@@ -98,6 +102,7 @@
 
         @include media-break($break-d-lg) {
             margin: 2rem 0;
+            margin-top: 0;
         }
 
         .img {
