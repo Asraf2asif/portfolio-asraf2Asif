@@ -11,7 +11,7 @@
 
 
         &-item {
-            @include size(220px, 320px);
+            @include size(220px, 325px);
             @include display-flex($placement:start, $direction:column);
             margin: 1.5rem;
             margin-top: 6rem;
@@ -48,30 +48,25 @@
             }
 
             h2 {
+                font-family: 'Merienda', cursive;
                 text-align: left;
-                margin: 45px 0 7px 0;
+                margin: 45px 0 4px 0;
                 border-bottom: 1px dashed;
                 padding-bottom: 5px;
                 font-size: 17px;
                 font-weight: bold;
-                font-family: 'Montserrat';
             }
 
             p {
+                font-family: 'Source Sans Pro', sans-serif;
                 padding-top: 7px;
-                font-family: 'Montserrat';
                 font-style: normal;
                 font-weight: 400;
-                font-size: .87rem;
-                line-height: 1.7;
+                font-size: .95rem;
+                line-height: 1.6;
                 color: $black-color;
+                text-align: left;
             }
         }
     }
-
-    // background: rgba(244, 143, 177, 1);
-    // background: rgba(129, 199, 132, 1);
-    // background: rgba(159, 168, 218, 1);
-    // background: rgba(128, 203, 196, 1);
-
 }

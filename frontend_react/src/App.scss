@@ -36,15 +36,17 @@
 
 .head-text {
   text-align: center;
+  font-family: 'Merienda', cursive;
 
   h2 {
-    font-size: 2.75rem;
+    font-size: 2.25rem;
     font-weight: 800;
     text-align: center;
-    color: $black-color;
+    color: $brown-color;
     text-transform: capitalize;
-    border-bottom: 2px solid $lightGray-color;
-    padding-bottom: 5px;
+    border-bottom: 1px solid $lightGray-color;
+    padding-top: 15px;
+    padding-bottom: 10px;
     display: inline-block;
   }
 
@@ -62,7 +64,7 @@
 }
 
 .p-text {
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   text-align: left;
   color: $gray-color;
   line-height: 1.5;

@@ -80,7 +80,7 @@ const Service = (props) => {
                   {title}
                 </h2>
                 {description.map((info, idx) => (
-                  <p className='p-text' key={idx}>
+                  <p key={idx}>
                     {info}
                   </p>
                 ))}
