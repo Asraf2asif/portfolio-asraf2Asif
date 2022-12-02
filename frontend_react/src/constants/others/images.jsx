@@ -21,6 +21,7 @@ import logo from '../../assets/logo.png';
 import frontend from '../../assets/frontend.png';
 import maintenance from '../../assets/maintenance.png';
 import backend from '../../assets/backend.png';
+import upRightIcon from '../../assets/up-right-from-square-solid.svg';
 
 export const images = {
   bg,
@@ -43,4 +44,5 @@ export const images = {
   frontend,
   maintenance,
   backend,
+  upRightIcon,
 };

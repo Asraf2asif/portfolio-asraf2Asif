@@ -144,10 +144,12 @@
 
                         svg {
                             @include size(17px);
+                            fill: $white-color;
                             color: $white-color;
                             cursor: pointer;
 
                             &:hover {
+                                fill: #37474F;
                                 color: #37474F;
                             }
 
@@ -158,6 +160,7 @@
 
                         &:hover {
                             svg {
+                                fill: #37474F;
                                 color: #37474F;
                             }
                         }
