@@ -3,6 +3,9 @@ import { MotionWrap } from '../../wrapper';
 import { client } from '../../client';
 import emailjs from '@emailjs/browser';
 import './Footer.scss';
+// import { images } from '../../constants';
+
+// const {codewars:codewarsImg} = images;
 
 const {
   REACT_APP_EMAILJS_SERVICE_ID = '',
@@ -131,3 +134,18 @@ const Footer = (props) => {
 };
 
 export default Footer;
+
+/**
+
+<i className="fa-solid fa-user" />
+<i className="fa-solid fa-at" />
+<i className="fa-solid fa-message" />
+
+<i className="fa-brands fa-github" />
+<i className="fa-brands fa-linkedin" />
+<i className="fa-brands fa-free-code-camp" />
+<i className="fa-brands fa-codepen" />
+<i className="fa-solid fa-paper-plane" />
+
+
+**/

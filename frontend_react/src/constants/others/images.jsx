@@ -21,6 +21,7 @@ import logo from '../../assets/logo.png';
 import frontend from '../../assets/frontend.png';
 import maintenance from '../../assets/maintenance.png';
 import backend from '../../assets/backend.png';
+import codewars from '../../assets/codewars.png';
 
 export const images = {
   bg,
@@ -43,4 +44,5 @@ export const images = {
   frontend,
   maintenance,
   backend,
+  codewars,
 };
