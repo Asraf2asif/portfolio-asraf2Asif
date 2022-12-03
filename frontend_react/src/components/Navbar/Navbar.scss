@@ -57,12 +57,13 @@
 
             // nav link
             a {
-                color: rgba(55, 71, 79, .71);
+                color: rgb(96, 108, 124);
                 text-decoration: none;
                 @include flex-direction(column);
                 text-transform: uppercase;
                 font-weight: 600;
                 @include transition($default-transition);
+                // text-shadow: 0 0 1px white;
 
                 // alternate nav link hover
                 &:hover {

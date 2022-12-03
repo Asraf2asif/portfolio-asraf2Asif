@@ -21,6 +21,7 @@
         @include transition(background-color 0.2s ease-in-out);
         position: relative;
         text-decoration: none;
+        border: 1px solid $white-color;
 
         &:hover {
             background-color: $white-color;
@@ -47,7 +48,7 @@
                 right: 0;
                 @include transform(translate(-50%, -50%));
                 font-size: 0.7rem;
-                color: white;
+                color: #37474f;
                 font-family: monospace;
             }
 
