@@ -5,6 +5,7 @@
 .app__footer {
     @include display-flex($flex:1, $display:false, $direction:column);
     width: 100%;
+    background: #37474F;
 
     @include media-break(768px) {
         @include flex-direction(column);

@@ -124,9 +124,7 @@
                 .links {
                     @include display-flex($justify-content:space-between, $direction:row-reverse);
                     width: 85px;
-                    margin: 20px;
-                    margin-left: auto;
-                    margin-top: 0;
+                    margin: 0 25px 20px auto;
 
                     a {
                         @include size(34px);
@@ -142,14 +140,14 @@
                             background-color: $white-color;
                         }
 
-                        svg {
+                        svg,
+                        i {
                             @include size(17px);
-                            fill: $white-color;
                             color: $white-color;
                             cursor: pointer;
+                            text-align: center;
 
                             &:hover {
-                                fill: #37474F;
                                 color: #37474F;
                             }
 
@@ -159,8 +157,9 @@
                         }
 
                         &:hover {
-                            svg {
-                                fill: #37474F;
+
+                            svg,
+                            i {
                                 color: #37474F;
                             }
                         }
@@ -195,7 +194,6 @@
 
                     .links {
                         margin-left: 20px;
-
                     }
                 }
             }

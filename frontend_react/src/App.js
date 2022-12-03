@@ -31,7 +31,7 @@ function App() {
           id='testimonial'
         />
         <Footer
-          className='app__footer app__container app__whitebg  app__flex-center'
+          className='app__footer app__container app__flex-center'
           id='contact'
         />
       </AppWrap>
