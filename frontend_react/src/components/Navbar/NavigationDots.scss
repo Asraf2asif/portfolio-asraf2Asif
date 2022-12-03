@@ -14,20 +14,20 @@
     }
 
     &-dot {
-        @include size(15px);
+        @include size(10px);
         @include border-radius(50%);
-        background-color: #cbcbcb;
-        margin: 0.5rem;
+        background-color: #37474f;
+        margin: 0.4rem;
         @include transition(background-color 0.2s ease-in-out);
         position: relative;
         text-decoration: none;
 
         &:hover {
-            background-color: $secondary-color;
+            background-color: $white-color;
         }
 
         &:active {
-            background-color: #313BAC;
+            background-color: #37474f;
         }
 
         @include media-break($break-d-xl, min) {
@@ -57,7 +57,7 @@
                 top: -7px;
                 right: 25px;
                 font-size: .8rem;
-                color: #86909f;
+                color: #37474f;
                 border: 1px solid $lightGray-color;
                 @include border-radius(3px);
                 display: none;
