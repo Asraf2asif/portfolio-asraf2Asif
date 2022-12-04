@@ -3,14 +3,14 @@ import { MotionWrap } from '../../wrapper';
 import { client } from '../../client';
 import emailjs from '@emailjs/browser';
 import './Footer.scss';
-// import { images } from '../../constants';
+import { variables } from '../../constants';
 
-// const {codewars:codewarsImg} = images;
+const { accountsList } = variables;
 
 const {
   REACT_APP_EMAILJS_SERVICE_ID = '',
-  REACT_APP_EMAILJS_TEMPLATE_ID = '',
-  REACT_APP_EMAILJS_PUBLIC_KEY = '',
+    REACT_APP_EMAILJS_TEMPLATE_ID = '',
+    REACT_APP_EMAILJS_PUBLIC_KEY = '',
 } = process.env;
 
 const Footer = (props) => {
@@ -75,34 +75,31 @@ const Footer = (props) => {
                 ref={formRef}
                 id='form'
                 onSubmit={sendEmail}
-                className='app__footer-form app__flex-center'
+                className='app__footer-form'
               >
-                <div className='app__flex-center'>
-                  <div>
-                    <label htmlFor='name'>Name</label>
-                    <input
-                      ref={nameRef}
-                      className='p-text'
-                      type='text'
-                      placeholder='Your Name'
-                      name='name'
-                      id='name'
-                    />
-                  </div>
-                  <div className='app__flex-center'>
-                    <label htmlFor='email'>Email</label>
-                    <input
-                      ref={emailRef}
-                      className='p-text'
-                      type='email'
-                      placeholder='Your Email'
-                      name='email'
-                      id='email'
-                      required
-                    />
-                  </div>
+                <div className='form-group'>
+                  <label htmlFor='name'>Name</label>
+                  <input
+                    ref={nameRef}
+                    className='p-text'
+                    type='text'
+                    placeholder='Your Name'
+                    name='name'
+                    id='name'
+                  />
+
+                  <label htmlFor='email'>Email</label>
+                  <input
+                    ref={emailRef}
+                    className='p-text'
+                    type='email'
+                    placeholder='Your Email'
+                    name='email'
+                    id='email'
+                    required
+                  />
                 </div>
-                <div className='app__flex-center'>
+                <div>
                   <label htmlFor='message'>Message</label>
                   <textarea
                     ref={messageRef}
@@ -127,7 +124,20 @@ const Footer = (props) => {
             </div>
           )}
         </div>
-        <div className='accounts'></div>
+        <div className='accounts'>
+          {accountsList.map(({name = '',linkPart1 = "",linkPart2 = '',icon:{src, type}}) => (
+            <a key={name} href={linkPart1 + linkPart2} target='_blank' rel='noreferrer'>              
+            { type === 'font' ? 
+              <i className={src} />:
+              <img src={src} alt={name} />
+             }
+             <div className="text">
+               <p className="name">{name}</p>
+               <p className="urlPart">{linkPart2}</p>
+             </div>
+            </a>
+          ))}
+        </div>
       </MotionWrap>
     </div>
   );
@@ -140,12 +150,6 @@ export default Footer;
 <i className="fa-solid fa-user" />
 <i className="fa-solid fa-at" />
 <i className="fa-solid fa-message" />
-
-<i className="fa-brands fa-github" />
-<i className="fa-brands fa-linkedin" />
-<i className="fa-brands fa-free-code-camp" />
-<i className="fa-brands fa-codepen" />
 <i className="fa-solid fa-paper-plane" />
-
 
 **/

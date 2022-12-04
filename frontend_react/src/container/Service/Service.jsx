@@ -21,9 +21,9 @@ const Service = (props) => {
       <MotionWrap>
         <div className='head-text'>
           <h2>
-            I Know that<span> Good Apps</span>
+            <span> Outstanding </span>Service
             <br />
-            means<span> Good Business</span>
+            for your<span> Dream project</span>
           </h2>
         </div>
         <div className='app__profiles'>

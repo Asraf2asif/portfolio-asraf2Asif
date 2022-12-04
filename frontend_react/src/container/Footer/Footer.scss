@@ -3,135 +3,136 @@
 @import '../../constants/styles/variable';
 
 .app__footer {
-    @include display-flex($flex:1, $display:false, $direction:column);
-    width: 100%;
-    background: #37474F;
+  @include display-flex($flex: 1, $display:false, $direction:column);
+  width: 100%;
+  background: #37474F;
 
-    @include media-break(768px) {
-        @include flex-direction(column);
+  @include media-break(768px) {
+    @include flex-direction(column);
+  }
+
+  &>div {
+    min-width: 960px;
+    margin: 20px;
+
+    @include media-break(960px) {
+      min-width: 100%;
+    }
+  }
+
+  button {
+    padding: 1rem 2rem;
+    @include border-radius(10px);
+    border: none;
+    background-color: $secondary-color;
+    font-weight: 500;
+    color: $white-color;
+    outline: none;
+    margin: 2rem 0 0 7px;
+    font-family: $font-base;
+    @include transition(cubic-bezier(0.55, 0.085, 0.68, 0.53));
+    cursor: pointer;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: #2430af;
+    }
+  }
+
+  &-form {
+    @include flex-direction(column);
+    margin: 1rem 2rem;
+
+    @include media-break($break-d-sm-p-50) {
+      margin: 1rem 0;
     }
 
-    &-cards {
-        width: 60%;
-        @include display-flex($justify-content:space-evenly, $align-items:center, $wrap:wrap);
-        margin: 4em 2rem 2rem;
-
-        @include media-break(768px) {
-            width: 100%;
-        }
-
-        .card {
-            min-width: 290px;
-            @include display-flex($direction:row, $justify-content:flex-start, $align-items:center);
-            margin: 1rem 0;
-            padding: 1rem;
-            @include border-radius(10px);
-            cursor: pointer;
-            background-color: #fef4f5;
-            @include transition($default-transition);
-
-            &:last-child {
-                background-color: #f2f7fb;
-
-                &:hover {
-                    @include box-shadow(0 0 25px #f2f7fb);
-                }
-            }
-
-            &:hover {
-                @include box-shadow(0 0 25px #fef4f5);
-            }
-
-            @include media-break($break-d-sm) {
-                width: 100%;
-            }
-
-            img {
-                @include size(40px);
-                margin: 0 0.7rem;
-            }
-
-            p {
-                font-weight: 500;
-            }
-
-            a {
-                text-decoration: none;
-                font-weight: 500;
-            }
-        }
+    .head-text {
+      margin-bottom: 20px;
     }
 
-    button {
-        padding: 1rem 2rem;
-        @include border-radius(10px);
-        border: none;
-        background-color: $secondary-color;
-        font-weight: 500;
-        color: $white-color;
-        outline: none;
-        margin: 2rem 0 0 0;
-        font-family: $font-base;
-        @include transition(cubic-bezier(0.55, 0.085, 0.68, 0.53));
-        cursor: pointer;
-        text-transform: uppercase;
-
-        &:hover {
-            background-color: #2430af;
-        }
+    .form-group {
+      @include display-flex($justify-content: space-between, $align-items: center, $wrap: wrap)
     }
 
-    &-form {
-        min-width: 100px;
-        @include flex-direction(column);
-        margin: 1rem 2rem;
-        @include margin-x(auto);
-
-        @include media-break(768px) {
-            width: 90%;
-            @include margin-x(auto);
-        }
-
-        @include media-break($break-d-sm-p-50) {
-            width: 100%;
-            margin: 1rem 0;
-        }
-
-        .head-text {
-            margin-bottom: 20px;
-        }
-
-        div {
-            width: 100%;
-            margin: 0.75rem 0;
-            @include border-radius(10px);
-            cursor: pointer;
-            background-color: $primary-color;
-            @include transition($default-transition);
-
-            &:hover {
-                @include box-shadow(0 0 25px $primary-color);
-            }
-
-            label {
-                display: none;
-            }
-
-            input,
-            textarea {
-                width: 100%;
-                padding: 0.95rem;
-                border: none;
-                @include border-radius(7px);
-                background-color: $primary-color;
-                font-family: $font-base;
-                color: $secondary-color;
-                outline: none;
-            }
-
-            textarea {
-                height: 170px;
-            }
-        }
+    label {
+      display: none;
     }
+
+    input,
+    textarea {
+      width: 100%;
+      border: none;
+      background-color: #263238;
+      font-family: $font-base;
+      color: #546E7A;
+      outline: none;
+      padding: 8px 15px;
+      margin: 7px;
+    }
+
+    #name,
+    #email {
+      max-width: 235px;
+    }
+
+    #message {
+      max-width: 490px;
+      height: 130px;
+    }
+  }
+
+  .accounts {
+    @include display-flex($justify-content: flex-start, $wrap:wrap);
+    border-top: 1px solid #455A64;
+    margin-top: 2rem;
+    padding: 0 10px;
+
+    a {
+      @include display-flex($justify-content: flex-start);
+      padding: 20px;
+      margin: 5px;
+      transition: all .4s ease-in-out;
+
+      &:hover {
+        @include box-shadow(rgba(0, 0, 0, .35) 0px 5px 15px);
+        @include transform(rotate(1deg));
+      }
+
+      i,
+      img {
+        padding: 3px 10px 3px 0;
+      }
+
+      i {
+        font-size: 1.75em;
+        color: white;
+      }
+
+      img {
+        @include size(35px, 31px);
+      }
+
+      .text {
+
+        .name,
+        .urlPart {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 400;
+          color: #B0BEC5;
+        }
+
+        .name {
+          font-size: 17px;
+          line-height: 1.35;
+          color: #B0BEC5;
+        }
+
+        .urlPart {
+          font-size: 15px;
+          line-height: 1.53;
+        }
+      }
+    }
+  }
 }
