@@ -37,7 +37,7 @@ const Work = (props) => {
       <MotionWrap reverseAnim>
         <div className='head-text'>
           <h2>
-            Evidence of my<span> Skills</span>
+            Evidence of my<span> Competence</span>
           </h2>
         </div>
         <div className='app__work-portfolio'>

@@ -5,7 +5,7 @@ import {
   Footer,
   Header,
   Skills,
-  Testimonial,
+  // Testimonial,
   Work,
 } from './container';
 import { Navbar } from './components';
@@ -26,10 +26,10 @@ function App() {
           className='app__skills app__container app__whitebg'
           id='skills'
         />
-        <Testimonial
-          className='app__testimonial app__container app__primarybg'
-          id='testimonial'
-        />
+        {/* <Testimonial
+              className='app__testimonial app__container app__primarybg'
+              id='testimonial'
+            /> */}
         <Footer
           className='app__footer app__container app__flex-center'
           id='contact'

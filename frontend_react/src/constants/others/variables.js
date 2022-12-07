@@ -7,7 +7,7 @@ const menuList = [
   'service',
   'work',
   'skills',
-  'testimonial',
+  // 'testimonial',
   'contact',
 ];
 const headCircleList = [

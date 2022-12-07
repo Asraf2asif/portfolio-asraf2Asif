@@ -1,16 +1,12 @@
 import React, { useState, useEffect, memo } from 'react';
-import { motion } from 'framer-motion';
-// import ReactTooltip from 'react-tooltip';
-import { MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
+import { MotionWrap } from '../../wrapper';
 import './Skills.scss';
 
 const Skills = memo((props) => {
   const [skills, setSkills] = useState([]);
-  // const [experiences, setExperiences] = useState([...expDefault]);
 
   useEffect(() => {
-    // const expQuery = '*[_type == "experiences"]';
     const skillsQuery = '*[_type == "skills"] | order(serial asc)';
 
     client
@@ -21,22 +17,13 @@ const Skills = memo((props) => {
       .catch((err) => {
         console.log(err);
       });
-
-    // client
-    //   .fetch(expQuery)
-    //   .then((data) => {
-    //     if (data && data.length > 0) setExperiences(data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   }, []);
 
   return (
     <div {...props}>
       <MotionWrap>
         <div className='head-text'>
-          <h2>Skills & Abilities</h2>
+          <h2>Notable <span>Skills & Abilities</span></h2>
         </div>
 
         <div className='app__skills-container'>
@@ -44,63 +31,57 @@ const Skills = memo((props) => {
             {skills.map(({ skillsArr = [] }, idx) => (
               <>
                 {/* <p className='p-text category'>{category}</p> */}
-                {skillsArr.map(({ name = '', icon = '#' }, idx) => (
-                  <motion.div
-                    whileInView={{ opacity: [0, 1] }}
-                    transition={{ duration: 0.5 }}
+                {skillsArr.map(({ name = '', icon = '' }, idx) => (
+                  <div
                     className='list-item app__flex-center'
                     key={`${name}_${idx}`}
                   >
-                    <div
-                      className='app__flex-center'
-                      style={{
-                        backgroundImage:
-                          typeof icon === 'object'
-                            ? `url(${urlFor(icon)})`
-                            : `url(${icon})`,
-                      }}
-                    ></div>
-                    <p className='p-text'>{name}</p>
-                  </motion.div>
+                    {icon !== '' && 
+                      <div
+                        className='app__flex-center'
+                        style={{
+                          backgroundImage:
+                            typeof icon === 'object'
+                              ? `url(${urlFor(icon)})`
+                              : `url(${icon})`,
+                        }}
+                    />}
+                    <p className={`p-text ${icon === '' ? ' no-icon' : ''}`}>{name}</p>
+                  </div>
                 ))}
                 <div className='list-item-end'></div>
               </>
             ))}
           </div>
-          {/* <div className='exp'>
-            {experiences.map(({ year = 2022, works = [] }, idx) => (
-              <motion.div className='exp-item' key={`${year}_${idx}`}>
-                <div className='exp-item-year'>
-                  <p className='bold-text'>{year}</p>
-                </div>
-                <motion.div className='exp-item-works'>
-                  {works.map(({ name = '', company = '', desc = '' }) => (
-                    <>
-                      <motion.div
-                        whileInView={{ opacity: [0, 1] }}
-                        transition={{ duration: 0.5 }}
-                        className='work'
-                        data-tip
-                        data-for={name}
-                        key={`${name}_${idx}`}
-                      >
-                        <h4 className='bold-text'>{name}</h4>
-                        <p className='p-text'>{company}</p>
-                      </motion.div>
-                      <ReactTooltip
-                        id={name}
-                        effect='solid'
-                        arrowColor='#fff'
-                        className='skills-tooltip'
-                      >
-                        {desc}
-                      </ReactTooltip>
-                    </>
-                  ))}
-                </motion.div>
-              </motion.div>
-            ))}
-          </div> */}
+          <div className="abilities">
+            <div>
+              <h3>Soft Skills</h3>
+              <ol>
+                <li><i className="fa-regular fa-thumbs-up"/> <p>Creativity, Critical Thinking, and problem-solving skills,</p></li>
+                <li><i className="fa-regular fa-thumbs-up"/> <p>Passion and hunger for excellence,</p></li>
+                <li><i className="fa-regular fa-thumbs-up"/> <p>Always curious, humble, and courageous,</p></li>
+                <li><i className="fa-regular fa-thumbs-up"/> <p>Self-organized and able to work independently,</p></li>
+                <li><i className="fa-regular fa-thumbs-up"/> <p>Open and adaptable to changes and unexpected obstacles,</p></li>
+                <li><i className="fa-regular fa-thumbs-up"/> <p>Empathy for customers, co-workers, vendors,</p></li>
+                <li><i className="fa-regular fa-thumbs-up"/> <p>and more...</p></li>
+              </ol>
+            </div>
+
+            <div>
+              <h3>Abilities</h3>
+              <ol>
+                <li><i className="fa-regular fa-circle-check"/> <p>Excellent code reading and writing abilities,</p></li>
+                <li><i className="fa-regular fa-circle-check"/> <p>Maintain and improve website and web apps,</p></li>
+                <li><i className="fa-regular fa-circle-check"/> <p>Troubleshooting and debugging code,</p></li>
+                <li><i className="fa-regular fa-circle-check"/> <p>Write Unit, Integration, and E2E tests,</p></li>
+                <li><i className="fa-regular fa-circle-check"/> <p>Diligence and attention to detail,</p></li>
+                <li><i className="fa-regular fa-circle-check"/> <p>Strong sense of design theory and typography,</p></li>
+                <li><i className="fa-regular fa-circle-check"/> <p>Sketching, creating wireframes, prototyping,</p></li>
+                <li><i className="fa-regular fa-circle-check"/> <p>Ability to learn new language and technology,</p></li>
+                <li><i className="fa-regular fa-circle-check"/> <p>and more...</p></li>
+              </ol>
+            </div>
+          </div>
         </div>
       </MotionWrap>
     </div>

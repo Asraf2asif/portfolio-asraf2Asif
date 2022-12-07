@@ -69,7 +69,7 @@ const Service = (props) => {
                     }}
                   />
                 </div>
-                <h2
+                <h3
                   style={{
                     ...(color !== '' && {
                       color: 'rgb(' + color + ')',
@@ -78,7 +78,7 @@ const Service = (props) => {
                   }}
                 >
                   {title}
-                </h2>
+                </h3>
                 {description.map((info, idx) => (
                   <p key={idx}>
                     {info}
