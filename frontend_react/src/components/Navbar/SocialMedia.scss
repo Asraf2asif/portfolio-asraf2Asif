@@ -1,57 +1,65 @@
-@import '../../constants/styles/prefix';
-@import '../../constants/styles/mixin';
-@import '../../constants/styles/variable';
+@import "../../constants/styles/prefix";
+@import "../../constants/styles/mixin";
+@import "../../constants/styles/variable";
 
 .app__social {
-    @include display-flex($justify-content:flex-end, $align-items:center, $direction:column);
-    padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    margin-bottom: 20px;
+  @include display-flex(
+    $justify-content: flex-end,
+    $align-items: center,
+    $direction: column
+  );
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 20px;
 
-    @include media-break($break-d-sm-p-50) {
-        display: none;
+  @include media-break($break-d-sm-p-50) {
+    display: none;
+  }
+
+  @include media-break($break-d-xl, min) {
+    @include size(70px);
+    margin: 0.5rem 0;
+  }
+
+  a {
+    @include size(30px);
+    @include border-radius(50%);
+    background-color: transparent;
+    margin: 0.35rem 0;
+    // border: 1px solid $lightGray-color;
+    @include flex-center();
+    @include transition($default-transition);
+    cursor: pointer;
+    text-decoration: none;
+
+    &.squere {
+      @include border-radius(0);
     }
 
-    @include media-break($break-d-xl, min) {
-        @include size(70px);
-        margin: 0.5rem 0;
+    &:hover {
+      background-color: #37474f;
+      border-color: #37474f;
     }
 
-    a {
+    svg {
+      @include size(15px);
+      color: #5e6b7b;
+      cursor: pointer;
+
+      &:hover {
+        color: $white-color;
+      }
+
+      @include media-break($break-d-xl, min) {
         @include size(30px);
-        @include border-radius(50%);
-        background-color: transparent;
-        margin: 0.35rem 0;
-        // border: 1px solid $lightGray-color;
-        @include flex-center();
-        @include transition($default-transition);
-        cursor: pointer;
-        text-decoration: none;
-
-        &:hover {
-            background-color: #37474f;
-            border-color: #37474f;
-        }
-
-        svg {
-            @include size(15px);
-            color: #5e6b7b;
-            cursor: pointer;
-
-            &:hover {
-                color: $white-color;
-            }
-
-            @include media-break($break-d-xl, min) {
-                @include size(30px);
-            }
-        }
-
-        &:hover {
-            svg {
-                color: $white-color;
-            }
-        }
+      }
     }
+
+    &:hover {
+      svg {
+        color: $white-color;
+      }
+    }
+  }
 }

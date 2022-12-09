@@ -1,17 +1,17 @@
-@import '../../constants/styles/prefix';
-@import '../../constants/styles/mixin';
-@import '../../constants/styles/variable';
+@import "../../constants/styles/prefix";
+@import "../../constants/styles/mixin";
+@import "../../constants/styles/variable";
 
 .app__footer {
-  @include display-flex($flex: 1, $display:false, $direction:column);
+  @include display-flex($flex: 1, $display: false, $direction: column);
   width: 100%;
-  background: #37474F;
+  background: #37474f;
 
   @include media-break(768px) {
     @include flex-direction(column);
   }
 
-  &>div {
+  & > div {
     min-width: 960px;
     margin: 20px;
 
@@ -20,82 +20,233 @@
     }
   }
 
-  button {
-    padding: 1rem 2rem;
-    @include border-radius(10px);
-    border: none;
-    background-color: $secondary-color;
-    font-weight: 500;
-    color: $white-color;
-    outline: none;
-    margin: 2rem 0 0 7px;
-    font-family: $font-base;
-    @include transition(cubic-bezier(0.55, 0.085, 0.68, 0.53));
-    cursor: pointer;
-    text-transform: uppercase;
+  .topPart {
+    @include display-flex(
+      $justify-content: space-between,
+      $align-items: center,
+      $wrap: wrap
+    );
 
-    &:hover {
-      background-color: #2430af;
-    }
-  }
-
-  &-form {
-    @include flex-direction(column);
-    margin: 1rem 2rem;
-
-    @include media-break($break-d-sm-p-50) {
-      margin: 1rem 0;
+    .bio,
+    .contact {
+      margin: 1rem 4rem;
+      @include media-break(550px) {
+        margin: 1rem 1rem;
+      }
+      @include media-break(350px) {
+        min-width: 100%;
+      }
     }
 
-    .head-text {
-      margin-bottom: 20px;
+    .bio {
+      max-width: 350px;
+
+      .logo {
+        width: 171px;
+        margin-left: -30px;
+        margin-bottom: -10px;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.64;
+        padding: 0 5px;
+        color: #b0bec5;
+      }
+
+      .info {
+        margin-top: 1.5rem;
+
+        .group {
+          @include display-flex($justify-content: flex-start);
+          padding: 5px 0;
+          margin: 7px 5px;
+
+          i,
+          img {
+            padding: 5px 5px 3px 0;
+          }
+
+          i {
+            font-size: 1.45em;
+            color: white;
+          }
+
+          img {
+            @include size(35px, 33px);
+          }
+
+          .text {
+            @include display-flex($wrap: wrap);
+
+            & > a {
+              transition: all 0.5s ease-in-out;
+
+              &:hover {
+                @include box-shadow(rgba(0, 0, 0, 0.35) 0px 2px 5px);
+                padding: 3px 8px;
+              }
+            }
+
+            font-size: 15px;
+            line-height: 1.53;
+          }
+        }
+      }
     }
 
-    .form-group {
-      @include display-flex($justify-content: space-between, $align-items: center, $wrap: wrap)
-    }
+    .contact {
+      max-width: 550px;
 
-    label {
-      display: none;
-    }
+      button {
+        padding: 0 15px;
+        @include border-radius(5px);
+        @include box-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px);
+        border: none;
+        background: #455a64;
+        outline: none;
+        margin: 7px;
+        cursor: pointer;
+        height: 35px;
+        position: relative;
+        padding-right: 50px;
 
-    input,
-    textarea {
-      width: 100%;
-      border: none;
-      background-color: #263238;
-      font-family: $font-base;
-      color: #546E7A;
-      outline: none;
-      padding: 8px 15px;
-      margin: 7px;
-    }
+        &:hover {
+          background-color: #006064;
+        }
 
-    #name,
-    #email {
-      max-width: 235px;
-    }
+        &:active {
+          @include box-shadow(rgba(0, 0, 0, 0.25) 0 0 0);
+        }
 
-    #message {
-      max-width: 490px;
-      height: 130px;
+        p {
+          text-transform: uppercase;
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 1.44;
+          color: #eceff1;
+          display: inline;
+        }
+
+        .icon {
+          background: #006064;
+          @include border-radius(0px 5px 5px 0px);
+          padding: 0 10px;
+          margin-left: 10px;
+          @include size(40px, 35px);
+          display: inline;
+          position: absolute;
+          top: 0;
+
+          i {
+            color: $white-color;
+            line-height: 35px;
+          }
+        }
+      }
+
+      &.confirmation button {
+        padding-right: 15px;
+      }
+
+      h3 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1.15;
+        color: #eceff1;
+        padding: 10px;
+      }
+
+      form {
+        @include flex-direction(column);
+
+        @include media-break($break-d-sm-p-50) {
+          margin: 1rem 0;
+        }
+
+        .head-text {
+          margin-bottom: 20px;
+        }
+
+        label {
+          display: none;
+        }
+
+        i {
+          color: #9eacb3;
+        }
+
+        .form-group {
+          @include display-flex(
+            $justify-content: space-between,
+            $align-items: center,
+            $wrap: wrap
+          );
+          min-width: 220px;
+
+          .form-control {
+            position: relative;
+            margin: 7px;
+
+            i {
+              position: absolute;
+              top: 10px;
+              left: 14px;
+            }
+
+            input,
+            textarea {
+              border: none;
+              background-color: #263238;
+              font-family: $font-base;
+              color: #b0bec5;
+              outline: none;
+              padding: 8px 15px;
+              padding-left: 40px;
+              @include border-radius(3px);
+            }
+          }
+          #message {
+            @include flex(1);
+            & > textarea {
+              width: 100%;
+              height: 130px;
+            }
+          }
+        }
+      }
     }
   }
 
   .accounts {
-    @include display-flex($justify-content: flex-start, $wrap:wrap);
-    border-top: 1px solid #455A64;
-    margin-top: 2rem;
-    padding: 0 10px;
+    @include display-flex($justify-content: flex-start, $wrap: wrap);
+    border-top: 1px solid #455a64;
+    padding: 10px;
+
+    margin: 1rem 4rem;
+    @include media-break(550px) {
+      margin: 1rem 1rem;
+    }
 
     a {
       @include display-flex($justify-content: flex-start);
-      padding: 20px;
+      padding: 10px 20px;
       margin: 5px;
-      transition: all .4s ease-in-out;
+      transition: all 0.4s ease-in-out;
 
       &:hover {
-        @include box-shadow(rgba(0, 0, 0, .35) 0px 5px 15px);
+        @include box-shadow(rgba(0, 0, 0, 0.35) 0px 5px 15px);
         @include transform(rotate(1deg));
       }
 
@@ -114,18 +265,16 @@
       }
 
       .text {
-
         .name,
         .urlPart {
-          font-family: 'Montserrat', sans-serif;
+          font-family: "Montserrat", sans-serif;
           font-weight: 400;
-          color: #B0BEC5;
+          color: #b0bec5;
         }
 
         .name {
           font-size: 17px;
           line-height: 1.35;
-          color: #B0BEC5;
         }
 
         .urlPart {

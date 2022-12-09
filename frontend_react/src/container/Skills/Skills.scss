@@ -1,9 +1,9 @@
-@import '../../constants/styles/prefix';
-@import '../../constants/styles/mixin';
-@import '../../constants/styles/variable';
+@import "../../constants/styles/prefix";
+@import "../../constants/styles/mixin";
+@import "../../constants/styles/variable";
 
 .app__skills {
-  @include display-flex($flex: 1, $display:false, $direction:column);
+  @include display-flex($flex: 1, $display: false, $direction: column);
   width: 100%;
 
   &-container {
@@ -19,10 +19,17 @@
     }
 
     .list {
-      @include display-flex($flex: 1 1 500px, $justify-content:center, $align-items:flex-start, $align-content:flex-start, $wrap:wrap);
+      margin: 2rem 1.5rem;
+      @include display-flex(
+        $flex: 1 1 500px,
+        $justify-content: flex-start,
+        $align-items: flex-start,
+        $align-content: flex-start,
+        $wrap: wrap
+      );
       margin-right: 5rem;
       max-width: 50%;
-      margin-bottom: 2rem;
+      margin-bottom: 0 1rem;
       @include flex(1 1 500px);
 
       @include media-break($break-nav-sm) {
@@ -92,12 +99,17 @@
 
       &-item-end {
         width: 100%;
-        margin-top: .8rem;
+        margin-top: 0.8rem;
       }
     }
 
     .abilities {
       @include flex(1 1 500px);
+      margin: 2rem 1.5rem;
+
+      @include media-break($break-d-sm-p-50) {
+        margin: 3rem 0;
+      }
 
       div {
         @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
@@ -106,7 +118,7 @@
       }
 
       h3 {
-        font-family: 'Merienda', cursive;
+        font-family: "Merienda", cursive;
         text-align: left;
         margin: 28px 0 10px 0;
         border-bottom: 1px dashed #e4e4e4;
@@ -121,7 +133,6 @@
       }
 
       ol {
-
         li {
           @include display-flex();
           color: #5e6b7b;
@@ -132,6 +143,7 @@
             padding-right: 8px;
             padding-top: 4px;
             line-height: 25px;
+            font-size: 0.8rem;
           }
         }
       }
