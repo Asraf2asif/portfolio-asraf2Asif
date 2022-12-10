@@ -1,202 +1,204 @@
-@import '../../constants/styles/prefix';
-@import '../../constants/styles/mixin';
-@import '../../constants/styles/variable';
+@import "../../constants/styles/prefix";
+@import "../../constants/styles/mixin";
+@import "../../constants/styles/variable";
 
 .app__work {
-    @include display-flex($flex:1, $display:false, $direction:column);
-    width: 100%;
+  @include display-flex($flex: 1, $display: false, $direction: column);
+  width: 100%;
 
-    &-portfolio {
-        margin: 1rem 2rem;
+  &-portfolio {
+    margin: 1rem 2rem;
 
-        .item {
-            @include transition($default-transition);
-            max-width: 1200px;
-            margin: 2rem 0;
+    .item {
+      @include transition($default-transition);
+      max-width: 1200px;
+      margin: 2rem 0;
+      @include align-items(flex-start);
+      margin-bottom: 3rem;
 
+      @include media-break($break-d-lg, min) {
+        @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
 
-
-            @include media-break($break-d-lg, min) {
-                @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
-
-                &:hover {
-                    @include box-shadow(0 0 25px rgba(0, 0, 0, 0.2));
-                }
-            }
-
-            @include media-break($break-d-lg) {
-                @include flex-direction(column);
-            }
-
-
-            &-thumb {
-                @include flex(1);
-
-                @include media-break($break-d-lg) {
-                    @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
-                }
-            }
-
-            &-content {
-                position: relative;
-                @include display-flex($justify-content:space-between, $direction:column);
-                background: #37474F;
-
-                @include media-break($break-d-lg) {
-                    height: auto;
-                    @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
-                }
-
-                h4 {
-                    font-family: 'Merienda', cursive;
-                    font-weight: 700;
-                    font-size: 1rem;
-                    color: #F6FAF9;
-                    padding-bottom: 5px;
-                    border-bottom: 1px solid #455A64;
-                    margin-bottom: 10px;
-                }
-
-                .info {
-                    @include display-flex($align-items:flex-end, $direction:column);
-                    max-width: 342px;
-                    padding: 20px;
-
-                    @include media-break($break-d-lg) {
-                        max-width: 750px;
-                    }
-
-                    h5,
-                    p {
-                        margin-bottom: 10px;
-                    }
-
-                    h5 {
-                        font-family: 'Montserrat', sans-serif;
-                        font-weight: 700;
-                        font-size: 12px;
-                        text-align: right;
-                        color: #80CBC4;
-
-                    }
-
-                    p {
-                        font-family: 'Source Sans Pro';
-                        font-style: normal;
-                        font-weight: 300;
-                        font-size: 15px;
-                        line-height: 1.6;
-                        color: rgba(236, 239, 241, .84);
-                        text-align: right;
-                    }
-                }
-
-                .tech {
-                    @include display-flex($align-items:flex-end, $direction:column);
-                    max-width: 342px;
-                    padding: 20px;
-                    padding-top: 0;
-
-                    @include media-break($break-d-lg) {
-                        max-width: 750px;
-                    }
-
-                    .tags {
-                        @include flex-wrap();
-                        @include justify-content(flex-end);
-
-                        .tag {
-                            background: #4A626C;
-                            padding: 5px 10px;
-                            border-radius: 15px;
-                            font-family: 'Source Sans Pro';
-                            font-style: normal;
-                            font-weight: 600;
-                            font-size: 14px;
-                            line-height: 1.57;
-                            color: #CFD8DC;
-                            display: inline-block;
-                            margin: 5px 5px;
-                        }
-                    }
-                }
-
-                .links {
-                    @include display-flex($justify-content:space-between, $direction:row-reverse);
-                    width: 85px;
-                    margin: 0 25px 20px auto;
-
-                    a {
-                        @include size(34px);
-                        @include border-radius(50%);
-                        background-color: #263238;
-                        border: 1px solid $lightGray-color;
-                        @include flex-center();
-                        @include transition($default-transition);
-                        cursor: pointer;
-                        text-decoration: none;
-
-                        &:hover {
-                            background-color: $white-color;
-                        }
-
-                        svg,
-                        i {
-                            @include size(17px);
-                            color: $white-color;
-                            cursor: pointer;
-                            text-align: center;
-
-                            &:hover {
-                                color: #37474F;
-                            }
-
-                            @include media-break($break-d-xl, min) {
-                                @include size(30px);
-                            }
-                        }
-
-                        &:hover {
-
-                            svg,
-                            i {
-                                color: #37474F;
-                            }
-                        }
-                    }
-                }
-            }
-
-            &:nth-child(2n+2) {
-                @include flex-direction(row-reverse);
-
-                @include media-break($break-d-lg) {
-                    @include flex-direction(column);
-                }
-
-                .item-content {
-                    .info {
-                        @include align-items(flex-start);
-
-                        p {
-                            text-align: left;
-                        }
-                    }
-
-                    .tech {
-                        @include align-items(flex-start);
-
-                        .tags {
-                            @include justify-content(flex-start);
-                        }
-
-                    }
-
-                    .links {
-                        margin-left: 20px;
-                    }
-                }
-            }
+        &:hover {
+          @include box-shadow(0 0 25px rgba(0, 0, 0, 0.2));
         }
+      }
+
+      @include media-break($break-d-lg) {
+        @include flex-direction(column);
+      }
+
+      &-thumb {
+        @include flex(1);
+
+        @include media-break($break-d-lg) {
+          @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
+        }
+      }
+
+      &-content {
+        position: relative;
+        @include display-flex(
+          $justify-content: space-between,
+          $direction: column
+        );
+        background: #37474f;
+
+        @include media-break($break-d-lg) {
+          height: auto;
+          @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
+        }
+
+        h4 {
+          font-family: "Merienda", cursive;
+          font-weight: 700;
+          font-size: 1rem;
+          color: #f6faf9;
+          padding-bottom: 5px;
+          border-bottom: 1px solid #455a64;
+          margin-bottom: 10px;
+        }
+
+        .info {
+          @include display-flex($align-items: flex-end, $direction: column);
+          max-width: 342px;
+          padding: 20px;
+
+          @include media-break($break-d-lg) {
+            max-width: 750px;
+          }
+
+          h5,
+          p {
+            margin-bottom: 10px;
+          }
+
+          h5 {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            text-align: right;
+            color: #80cbc4;
+          }
+
+          p {
+            font-family: "Source Sans Pro";
+            font-style: normal;
+            font-weight: 300;
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(236, 239, 241, 0.84);
+            text-align: right;
+          }
+        }
+
+        .tech {
+          @include display-flex($align-items: flex-end, $direction: column);
+          max-width: 342px;
+          padding: 20px;
+          padding-top: 0;
+
+          @include media-break($break-d-lg) {
+            max-width: 750px;
+          }
+
+          .tags {
+            @include flex-wrap();
+            @include justify-content(flex-end);
+
+            .tag {
+              background: #4a626c;
+              padding: 5px 10px;
+              border-radius: 15px;
+              font-family: "Source Sans Pro";
+              font-style: normal;
+              font-weight: 600;
+              font-size: 14px;
+              line-height: 1.57;
+              color: #cfd8dc;
+              display: inline-block;
+              margin: 5px 5px;
+            }
+          }
+        }
+
+        .links {
+          @include display-flex(
+            $justify-content: space-between,
+            $direction: row-reverse
+          );
+          width: 85px;
+          margin: 0 25px 20px auto;
+
+          a {
+            @include size(34px);
+            @include border-radius(50%);
+            background-color: #263238;
+            border: 1px solid $lightGray-color;
+            @include flex-center();
+            @include transition($default-transition);
+            cursor: pointer;
+            text-decoration: none;
+
+            &:hover {
+              background-color: $white-color;
+            }
+
+            svg,
+            i {
+              @include size(17px);
+              color: $white-color;
+              cursor: pointer;
+              text-align: center;
+
+              &:hover {
+                color: #37474f;
+              }
+
+              @include media-break($break-d-xl, min) {
+                @include size(30px);
+              }
+            }
+
+            &:hover {
+              svg,
+              i {
+                color: #37474f;
+              }
+            }
+          }
+        }
+      }
+
+      &:nth-child(2n + 2) {
+        @include flex-direction(row-reverse);
+
+        @include media-break($break-d-lg) {
+          @include flex-direction(column);
+        }
+
+        .item-content {
+          .info {
+            @include align-items(flex-start);
+
+            p {
+              text-align: left;
+            }
+          }
+
+          .tech {
+            @include align-items(flex-start);
+
+            .tags {
+              @include justify-content(flex-start);
+            }
+          }
+
+          .links {
+            margin-left: 20px;
+          }
+        }
+      }
     }
+  }
 }
