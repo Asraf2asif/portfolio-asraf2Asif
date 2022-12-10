@@ -14,7 +14,11 @@
       max-width: 1200px;
       margin: 2rem 0;
       @include align-items(flex-start);
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
+
+      &:last-child {
+        margin-bottom: 2rem;
+      }
 
       @include media-break($break-d-lg, min) {
         @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
