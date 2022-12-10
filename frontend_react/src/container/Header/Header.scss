@@ -1,216 +1,238 @@
-@import '../../constants/styles/prefix';
-@import '../../constants/styles/mixin';
-@import '../../constants/styles/variable';
+@import "../../constants/styles/prefix";
+@import "../../constants/styles/mixin";
+@import "../../constants/styles/variable";
 
 .app__header {
-    margin-top: 0;
-    @include display-flex($flex:1, $display:false, $direction:row);
-    @include size(100%);
-    padding: 6rem 2rem 0;
-    @include background-size(cover);
-    background-repeat: repeat;
-    background-position: center center;
+  margin-top: 0;
+  @include display-flex($flex: 1, $display: false, $direction: row);
+  @include size(100%);
+  padding: 6rem 2rem 0;
+  @include background-size(cover);
+  background-repeat: repeat;
+  background-position: center center;
 
-    @include media-break($break-d-xl, min) {
-        padding-top: 8rem;
-    }
+  @include media-break($break-d-xl, min) {
+    padding-top: 8rem;
+  }
+
+  @include media-break($break-d-lg) {
+    @include flex-direction(column);
+  }
+
+  @include media-break($break-d-sm) {
+    padding: 6rem 1rem 2rem;
+  }
+
+  &-info {
+    @include display-flex(
+      $flex: 0.65,
+      $display: false,
+      $placement: start,
+      $direction: column
+    );
+    height: 100%;
 
     @include media-break($break-d-lg) {
+      width: 100%;
+      margin-right: 0;
+    }
+
+    .badge {
+      width: 100%;
+      @include display-flex($placement: end, $direction: column);
+
+      @include media-break($break-d-lg) {
+        @include flex-start();
+      }
+
+      @include media-break($break-d-sm) {
+        margin-bottom: 1.5rem;
+      }
+
+      .badge-cmp,
+      .tag-cmp {
+        padding: 1rem 2rem;
+        border: $white-color;
+        border-radius: 15px;
+        @include flex-direction(row);
+        width: auto;
+        @include box-shadow(0 0 20px rgba(0, 0, 0, 0.1));
+      }
+
+      .badge-cmp {
+        span {
+          color: rgb(11, 211, 177);
+          font-size: 2.5rem;
+        }
+
+        @include media-break($break-d-xl, min) {
+          font-size: 5rem;
+        }
+
+        .p-text {
+          padding-left: 10px;
+        }
+
+        .name {
+          font-family: "Merienda", cursive;
+          font-size: 2rem;
+          font-weight: 800;
+          padding-left: 5px;
+          text-transform: uppercase;
+        }
+      }
+
+      .tag-cmp {
         @include flex-direction(column);
+        margin-top: 2rem;
+
+        @include media-break($break-d-lg) {
+          display: none;
+        }
+
+        p {
+          width: 100%;
+          line-height: 1.9;
+          text-transform: uppercase;
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  &-img {
+    @include display-flex($flex: 1, $placement: end);
+    height: 100%;
+    position: relative;
+    margin-left: 2rem;
+
+    @include media-break($break-d-lg) {
+      margin: 2rem 0;
+      margin-top: 0;
     }
 
     @include media-break($break-d-sm) {
-        padding: 6rem 1rem 2rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      margin-bottom: 1.5rem;
     }
 
+    .img {
+      position: absolute;
+      @include size(100%, 100%);
+      z-index: 1;
+      @include background-size(contain);
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
 
-    &-info {
-        @include display-flex($flex:0.65, $display:false, $placement:start, $direction:column);
-        height: 100%;
+    .overlay_circle {
+      @include size(100%, 90%);
+    }
 
-        @include media-break($break-d-lg) {
-            width: 100%;
-            margin-right: 0;
+    .bio {
+      position: absolute;
+      bottom: -20px;
+      padding: 1rem 1rem;
+      z-index: 5;
+      background: rgba(208, 215, 225, 0.8);
+      text-align: center;
+      color: #333333;
+      line-height: 1.7;
+      @include box-shadow(0 0 20px rgba(63, 60, 60, 0.5));
+      text-transform: capitalize;
+      font-weight: 700;
+      font-family: "Merienda", cursive;
+      font-size: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      min-width: 350px;
+      @include word-break(keep-all);
+
+      @include media-break($break-d-sm) {
+        font-size: 0.9rem;
+        min-width: 301px;
+      }
+    }
+  }
+
+  &-circles {
+    @include display-flex(
+      $flex: 0.75,
+      $justify-content: space-evenly,
+      $align-items: flex-start,
+      $direction: column
+    );
+    height: 100%;
+    margin-left: 1rem;
+
+    @include media-break($break-d-lg) {
+      width: 100%;
+      @include display-flex($display: false, $direction: row, $wrap: wrap);
+      margin-left: 0;
+    }
+
+    .circle-cmp {
+      @include size(100px);
+      @include border-radius(50%);
+      background: $white-color;
+      @include box-shadow(0 0 20px rgba(0, 0, 0, 0.1));
+      position: relative;
+
+      @include media-break($break-d-xl, min) {
+        &:nth-child(1) {
+          @include size(400px);
         }
+      }
 
+      &:nth-child(2) {
+        margin: 1.75rem;
+        @include size(130px);
+
+        @include media-break($break-d-xl, min) {
+          margin: 0;
+          @include size(150px);
+        }
+      }
+
+      @include media-break($break-d-lg) {
+        margin: 1rem;
+      }
+
+      img {
+        @include size(60%);
+      }
+
+      .badge {
+        position: absolute;
+        background: white;
+        padding-bottom: 2px;
+        bottom: 0;
+        width: 55px;
+        @include border-radius(0 0 5px 5px);
+
+        p {
+          text-transform: uppercase;
+          font-size: 0.7rem;
+        }
+      }
+
+      &:nth-child(2) {
         .badge {
-            width: 100%;
-            @include display-flex($placement:end, $direction:column);
-
-            @include media-break($break-d-lg) {
-                @include flex-start();
-            }
-
-            .badge-cmp,
-            .tag-cmp {
-                padding: 1rem 2rem;
-                border: $white-color;
-                border-radius: 15px;
-                @include flex-direction(row);
-                width: auto;
-                @include box-shadow(0 0 20px rgba(0, 0, 0, 0.1));
-            }
-
-            .badge-cmp {
-                span {
-                    color: rgb(11, 211, 177);
-                    font-size: 2.5rem;
-                }
-
-                @include media-break($break-d-xl, min) {
-                    font-size: 5rem;
-                }
-
-                .p-text {
-                    padding-left: 10px;
-                }
-
-                .name {
-                    font-family: "Merienda", cursive;
-                    font-size: 2rem;
-                    font-weight: 800;
-                    padding-left: 5px;
-                    text-transform: uppercase;
-                }
-
-            }
-
-            .tag-cmp {
-                @include flex-direction(column);
-                margin-top: 2rem;
-
-                @include media-break($break-d-lg) {
-                    display: none;
-                }
-
-                p {
-                    width: 100%;
-                    line-height: 1.9;
-                    text-transform: uppercase;
-                    text-align: right;
-                }
-
-            }
+          width: 70px;
         }
+      }
+
+      &:nth-child(3) {
+        .badge {
+          width: 60px;
+
+          p {
+            font-size: 0.65rem;
+          }
+        }
+      }
     }
-
-    &-img {
-        @include display-flex($flex:1, $placement:end);
-        height: 100%;
-        position: relative;
-        margin-left: 2rem;
-
-        @include media-break($break-d-lg) {
-            margin: 2rem 0;
-            margin-top: 0;
-        }
-
-        .img {
-            position: absolute;
-            @include size(100%, 100%);
-            z-index: 1;
-            @include background-size(contain);
-            background-repeat: no-repeat;
-            background-position: center center;
-        }
-
-        .overlay_circle {
-            @include size(100%, 90%);
-        }
-
-        .bio {
-            position: absolute;
-            bottom: -20px;
-            padding: 1rem 1rem;
-            z-index: 5;
-            background: rgba(208, 215, 225, .8);
-            text-align: center;
-            color: #333333;
-            line-height: 1.7;
-            @include box-shadow(0 0 20px rgba(63, 60, 60, .5));
-            text-transform: capitalize;
-            font-weight: 700;
-            font-family: "Merienda", cursive;
-            font-size: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: block;
-            min-width: 350px;
-            @include word-break(keep-all);
-        }
-    }
-
-    &-circles {
-        @include display-flex($flex:0.75, $justify-content:space-evenly, $align-items:flex-start, $direction:column);
-        height: 100%;
-        margin-left: 1rem;
-
-        @include media-break($break-d-lg) {
-            width: 100%;
-            @include display-flex($display:false, $direction:row, $wrap:wrap);
-            margin-left: 0;
-        }
-
-        .circle-cmp {
-            @include size(100px);
-            @include border-radius(50%);
-            background: $white-color;
-            @include box-shadow(0 0 20px rgba(0, 0, 0, 0.1));
-            position: relative;
-
-            @include media-break($break-d-xl, min) {
-                &:nth-child(1) {
-                    @include size(400px);
-                }
-            }
-
-            &:nth-child(2) {
-                margin: 1.75rem;
-                @include size(130px);
-
-                @include media-break($break-d-xl, min) {
-                    margin: 0;
-                    @include size(150px);
-                }
-            }
-
-            @include media-break($break-d-lg) {
-                margin: 1rem;
-            }
-
-            img {
-                @include size(60%);
-            }
-
-            .badge {
-                position: absolute;
-                background: white;
-                padding-bottom: 2px;
-                bottom: 0;
-                width: 55px;
-                @include border-radius(0 0 5px 5px);
-
-                p {
-                    text-transform: uppercase;
-                    font-size: 0.7rem;
-                }
-            }
-
-            &:nth-child(2) {
-                .badge {
-                    width: 70px;
-                }
-            }
-
-            &:nth-child(3) {
-                .badge {
-                    width: 60px;
-
-                    p {
-                        font-size: 0.65rem;
-                    }
-                }
-            }
-        }
-    }
+  }
 }
