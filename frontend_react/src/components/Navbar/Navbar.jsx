@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <nav className="app__navbar">
-      <a href="/" className="app__navbar-logo">
+      <a href="/#home" className="app__navbar-logo">
         <img src={logoImg} alt="logo" />
       </a>
 
