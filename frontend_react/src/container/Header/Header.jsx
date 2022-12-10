@@ -68,9 +68,9 @@ const Header = (props) => {
         />
         <motion.div
           whileInView={{
-            y: [50, 0],
+            opacity: [0, 1],
           }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
           className="bio"
         >
           A programmer with a wide range of
