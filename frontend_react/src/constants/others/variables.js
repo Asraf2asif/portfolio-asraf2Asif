@@ -1,3 +1,8 @@
+import {
+  MdOutlineHome,
+  MdOutlineHomeRepairService,
+  MdOutlineRoomService,
+} from "react-icons/md";
 import { images } from "./images";
 
 const {
@@ -16,6 +21,17 @@ const menuList = [
   // 'testimonial',
   "contact",
 ];
+
+const menuIconList = {
+  [menuList[0]]: <MdOutlineHome />,
+  [menuList[1]]: <MdOutlineRoomService />,
+  [menuList[2]]: <MdOutlineHomeRepairService />,
+  [menuList[3]]: "fa-regular fa-lightbulb",
+  [menuList[4]]: "fa-regular fa-address-card",
+};
+
+const resumeLink =
+  "https://drive.google.com/file/d/19jFpWO143l8mOzDHMlt8YvX9LaQaf1rn/view?usp=share_link";
 
 const headCircleList = [
   { name: "Design", icon: frontend },
@@ -126,4 +142,6 @@ export const variables = {
   workCatList,
   accountsList,
   bioData,
+  resumeLink,
+  menuIconList,
 };

@@ -1,168 +1,208 @@
-@import '../../constants/styles/prefix';
-@import '../../constants/styles/mixin';
-@import '../../constants/styles/variable';
+@import "../../constants/styles/prefix";
+@import "../../constants/styles/mixin";
+@import "../../constants/styles/variable";
 
 .app__navbar {
-    width: 100%;
-    @include display-flex($justify-content:space-between, $align-items:center);
-    padding: 1rem 2rem;
-    // background: rgba(255, 255, 255, .25);
-    @include backdrop-filter(blur(4px));
-    border: 1px solid rgba(255, 255, 255, .18);
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    min-height: 65px;
-    background: transparent;
+  width: 100%;
+  @include display-flex($justify-content: space-between, $align-items: center);
+  padding: 1rem 2rem;
+  // background: rgba(255, 255, 255, .25);
+  @include backdrop-filter(blur(4px));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  min-height: 65px;
+  background: transparent;
 
-    // nav logo holder
-    &-logo {
-        @include display-flex($justify-content:flex-start, $align-items:center);
-        width: 171px;
-        position: absolute;
-        top: -10px;
+  // nav logo holder
+  &-logo {
+    @include display-flex($justify-content: flex-start, $align-items: center);
+    width: 171px;
+    position: absolute;
+    top: -10px;
 
-        // nav logo img
-        img {
-            width: 100%;
-            height: auto;
-        }
+    // nav logo img
+    img {
+      width: 100%;
+      height: auto;
     }
+  }
 
-    // nav list
-    &-links {
-        @include display-flex($flex:1, $placement:center);
-        list-style-type: none;
+  // nav list
+  &-links {
+    @include display-flex($flex: 1, $placement: center);
+    list-style-type: none;
 
-        // nav list item
-        li {
-            margin: 0 1rem;
-            cursor: pointer;
-            @include flex-direction(column);
+    // nav list item
+    li {
+      margin: 0 1rem;
+      cursor: pointer;
+      @include flex-direction(column);
 
-            // menu hover indicator (dot)
-            div {
-                @include size(5px);
-                background: transparent;
-                @include border-radius(50%);
-                margin-bottom: 5px;
-            }
-
-            // show that indicator on hover
-            &:hover {
-                div {
-                    background: $secondary-color;
-                }
-            }
-
-            // nav link
-            a {
-                color: rgb(96, 108, 124);
-                text-decoration: none;
-                @include flex-direction(column);
-                text-transform: uppercase;
-                font-weight: 600;
-                @include transition($default-transition);
-                // text-shadow: 0 0 1px white;
-
-                // alternate nav link hover
-                &:hover {
-                    color: $secondary-color;
-                }
-            }
-        }
-
-        // hide default nav links on small screen
-        @include media-break($break-nav-sm) {
-            display: none;
-        }
-    }
-
-    // alternate nav contents on small screen
-    &-small {
-        // alternate nav button
-        @include size(35px);
+      // menu hover indicator (dot)
+      div {
+        @include size(5px);
+        background: transparent;
         @include border-radius(50%);
-        position: relative;
-        @include flex-center();
-        background: $secondary-color;
-        padding: 4px;
+        margin-bottom: 5px;
+      }
 
-        position: absolute;
-        right: 20px;
-        top: 10px;
+      &.resume div {
+        @include transform(translateY(-5px));
+      }
 
-        // alternate nav btn icon
-        svg {
-            @include size(70%);
-            color: $white-color;
-            cursor: pointer;
-        }
-
-        // alternate nav link holder
+      // show that indicator on hover
+      &:hover {
         div {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            z-index: 5;
-            padding: 1rem;
-            @include size(190px, auto);
-            @include display-flex($direction:column, $placement:end);
-            background: url(../../assets/bgWhite.png);
-            background-color: $white-color;
-            @include background-size(cover);
-            background-repeat: repeat;
-            @include box-shadow(0 0 20px rgba(168, 168, 168, 0.15));
-            @include border-radius(15px);
+          background: $secondary-color;
+        }
+      }
 
-            // close btn icon
-            svg {
-                @include size(25px);
-                color: $gray-color;
-                margin: 0.5rem 1rem;
-                cursor: pointer;
-                position: fixed;
-                top: 15px;
-                right: 7px;
-            }
+      // nav link
+      a {
+        color: rgb(96, 108, 124);
+        text-decoration: none;
+        @include flex-direction(column);
+        text-transform: uppercase;
+        font-weight: 600;
+        @include transition($default-transition);
+        @include display-flex($direction: row, $align-items: center);
 
-            // alternate nav list
-            ul {
-                list-style: none;
-                @include space-reset();
-                @include size(100%);
-                @include display-flex($direction:column, $placement:start);
-
-                // alternate nav list item
-                li {
-                    margin: 1rem;
-
-                    // alternate nav link
-                    a {
-                        color: $gray-color;
-                        text-decoration: none;
-                        font-size: 1rem;
-                        text-transform: uppercase;
-                        font-weight: 500;
-                        @include transition($default-transition);
-
-                        // alternate nav link hover
-                        &:hover {
-                            color: $secondary-color;
-                        }
-                    }
-                }
-            }
-
-            // hide alternate nav link holder on large screen
-            @include media-break($break-nav-sm, min) {
-                display: none;
-            }
+        // alternate nav link hover
+        &:hover {
+          color: $secondary-color;
         }
 
-        // hide alternate nav button on large screen
-        @include media-break($break-nav-sm, min) {
-            display: none;
+        i,
+        svg {
+          padding: 0 7px;
         }
+        i {
+          font-size: 0.7rem;
+        }
+
+        svg {
+          font-size: 1rem;
+          @include size(auto);
+        }
+      }
+
+      &.resume a {
+        border: 1px solid #5f6b7a;
+        padding: 2px 8px;
+        margin: -5px -8px;
+        @include border-radius(3px);
+
+        &:hover {
+          background: #5f6b7a;
+          color: darken($white-color, 5%);
+        }
+      }
     }
+
+    // hide default nav links on small screen
+    @include media-break($break-nav-sm) {
+      display: none;
+    }
+  }
+
+  // alternate nav contents on small screen
+  &-small {
+    // alternate nav button
+    @include size(35px);
+    @include border-radius(50%);
+    position: relative;
+    @include flex-center();
+    background: $secondary-color;
+    padding: 4px;
+
+    position: absolute;
+    right: 20px;
+    top: 10px;
+
+    // alternate nav btn icon
+    svg {
+      @include size(70%);
+      color: $white-color;
+      cursor: pointer;
+    }
+
+    // alternate nav link holder
+    div {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 5;
+      padding: 1rem;
+      @include size(190px, auto);
+      @include display-flex($direction: column, $placement: end);
+      background: url(../../assets/bgWhite.png);
+      background-color: $white-color;
+      @include background-size(cover);
+      background-repeat: repeat;
+      @include box-shadow(0 0 20px rgba(168, 168, 168, 0.15));
+      @include border-radius(15px);
+
+      // close btn icon
+      svg {
+        @include size(25px);
+        color: $gray-color;
+        margin: 0.5rem 1rem;
+        cursor: pointer;
+        position: fixed;
+        top: 15px;
+        right: 7px;
+      }
+
+      // alternate nav list
+      ul {
+        list-style: none;
+        @include space-reset();
+        @include size(100%);
+        @include display-flex($direction: column, $placement: start);
+
+        // alternate nav list item
+        li {
+          margin: 0.8rem 1rem;
+
+          // alternate nav link
+          a {
+            color: $gray-color;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            @include transition($default-transition);
+            @include display-flex($direction: row, $align-items: center);
+
+            // alternate nav link hover
+            &:hover {
+              color: $secondary-color;
+            }
+          }
+
+          &.resume {
+            margin-left: 1.4rem;
+            a {
+              border: 1px solid #5f6b7a;
+              padding: 2px 5px;
+              margin: -5px -5px;
+              @include border-radius(3px);
+            }
+          }
+        }
+      }
+
+      // hide alternate nav link holder on large screen
+      @include media-break($break-nav-sm, min) {
+        display: none;
+      }
+    }
+
+    // hide alternate nav button on large screen
+    @include media-break($break-nav-sm, min) {
+      display: none;
+    }
+  }
 }
