@@ -98,7 +98,6 @@ const Footer = (props) => {
                       ) : (
                         <>
                           <a
-                            key={name}
                             href={link1 + text1}
                             target="_blank"
                             rel="noreferrer"
@@ -106,7 +105,6 @@ const Footer = (props) => {
                             <p>{text1},</p>
                           </a>
                           <a
-                            key={name}
                             href={link2 + text2}
                             target="_blank"
                             rel="noreferrer"
