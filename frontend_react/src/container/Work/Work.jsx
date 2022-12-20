@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { client, urlFor } from "../../client";
 import { MotionWrap } from "../../wrapper";
 import "./Work.scss";
+import { images } from "../../constants";
+
+const { bg: bgImg } = images;
 
 const Work = (props) => {
   const [works, setWorks] = useState([]);
@@ -56,7 +59,10 @@ const Work = (props) => {
               idx
             ) => (
               <div key={idx} className="item app__flex-center ">
-                <div className="item-thumb">
+                <div
+                  className="item-thumb"
+                  style={{ backgroundImage: `url(${bgImg})` }}
+                >
                   {typeof imgUrlsM === "object" &&
                   typeof imgUrls === "object" ? (
                     <img

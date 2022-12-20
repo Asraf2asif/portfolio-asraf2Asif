@@ -35,6 +35,9 @@
 
       &-thumb {
         @include flex(1);
+        @include background-size(cover);
+        background-repeat: repeat;
+        background-position: center center;
 
         @include media-break($break-d-lg) {
           @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
