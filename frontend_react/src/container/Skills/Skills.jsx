@@ -2,6 +2,9 @@ import React, { useState, useEffect, memo } from "react";
 import { urlFor, client } from "../../client";
 import { MotionWrap } from "../../wrapper";
 import "./Skills.scss";
+import { images } from "../../constants";
+
+const { bg: bgImg } = images;
 
 const Skills = memo((props) => {
   const [skills, setSkills] = useState([]);
@@ -59,7 +62,7 @@ const Skills = memo((props) => {
             ))}
           </div>
           <div className="abilities">
-            <div>
+            <div style={{ backgroundImage: `url(${bgImg})` }}>
               <h3>Soft Skills</h3>
               <ol>
                 <li>
@@ -94,7 +97,7 @@ const Skills = memo((props) => {
               </ol>
             </div>
 
-            <div>
+            <div style={{ backgroundImage: `url(${bgImg})` }}>
               <h3>Abilities</h3>
               <ol>
                 <li>

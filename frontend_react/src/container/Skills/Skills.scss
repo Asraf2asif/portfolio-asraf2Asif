@@ -115,6 +115,9 @@
         @include box-shadow(0 0 15px rgba(0, 0, 0, 0.2));
         padding: 40px 50px;
         margin-bottom: 2rem;
+        @include background-size(cover);
+        background-repeat: repeat;
+        background-position: center center;
       }
 
       h3 {
